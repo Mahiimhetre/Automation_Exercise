@@ -1,0 +1,14 @@
+<suite name="Ecommerce Suite">
+    <test name="Smoke Tests">
+        <classes>
+            <class name="test.tests.LoginTest"/>
+            <class name="test.tests.SearchTest"/>
+        </classes>
+    </test>
+    <test name="Regression Tests">
+        <classes>
+            <class name="test.tests.CartTest"/>
+            <class name="test.tests.CheckoutTest"/>
+        </classes>
+    </test>
+</suite>
