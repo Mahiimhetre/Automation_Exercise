@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="">
+    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding signup function">
+      <change afterPath="$PROJECT_DIR$/src/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/CheckoutPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/ProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/commonWaits.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/takeScreenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestNg/test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +37,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Mahiimhetre"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mahiimhetre&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:/Mahiimhetre/AutomationExercise.git",
-    "accountId": "35814d85-0397-46f3-ba9d-6c91f9bdb22a"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:/Mahiimhetre/AutomationExercise.git&quot;,
+    &quot;accountId&quot;: &quot;35814d85-0397-46f3-ba9d-6c91f9bdb22a&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -50,12 +65,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.signUp.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.SignupTest.register.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Mahesh/IdeaProjects/AutomationExercise",
+    "last_opened_file_path": "C:/Users/Mahesh/IdeaProjects/AutomationExercise/src",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -63,13 +80,41 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
+      <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\resources" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java\Framework\testData" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java\Framework" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SignupTest.register" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="AutomationExercise" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Framework.testCases.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Framework.testCases" />
+      <option name="MAIN_CLASS_NAME" value="Framework.testCases.SignupTest" />
+      <option name="METHOD_NAME" value="register" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.SignupTest.register" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,11 +133,29 @@
       <option name="project" value="LOCAL" />
       <updated>1747830727381</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding xpaths">
+      <option name="closed" value="true" />
+      <created>1747831465462</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747831465462</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding xpaths" />
     <option name="LAST_COMMIT_MESSAGE" value="Adding xpaths" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

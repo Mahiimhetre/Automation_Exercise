@@ -13,7 +13,7 @@ public class HomePage {
      * @param : No Params
      * @return : No Return Value
      */
-    public void HomePage(WebDriver driver){
+    public HomePage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
@@ -24,10 +24,10 @@ public class HomePage {
     @FindBy(css = "a[href='/view_cart']")
     public WebElement cartpage;
 
-    @FindBy(partialLinkText = "Signup")
+    @FindBy(xpath = "//a[@href='/login']")
     public WebElement signuppage;
 
-    @FindBy(partialLinkText = "Login")
+    @FindBy(xpath = "//a[@href='/login']")
     public WebElement loginpage;
 
     @FindBy(linkText = "Contact us")

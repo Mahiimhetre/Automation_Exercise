@@ -10,7 +10,7 @@ import java.util.LinkedList;
 
 public class ProductPage {
     WebDriver driver;
-    public void ProductPage(WebDriver Driver){
+    public ProductPage(WebDriver Driver){
         this.driver= driver;
         PageFactory.initElements(driver,this);
     }

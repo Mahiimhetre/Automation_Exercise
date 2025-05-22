@@ -10,10 +10,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class takeScreenShot {
+public class screenShot {
 
-
-    public static void takeScreenshot(WebDriver driver, String testName) {
+    public static void takess(WebDriver driver, String testName) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File src = ts.getScreenshotAs(OutputType.FILE);
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());

@@ -11,7 +11,7 @@ public class CheckoutPage {
      * @param : No Params
      * @return : No Return Value
      */
-    public void CheckoutPage(WebDriver driver){
+    public CheckoutPage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
