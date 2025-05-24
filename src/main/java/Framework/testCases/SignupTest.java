@@ -2,7 +2,6 @@ package Framework.testCases;
 
 //SignupPage	- Successful registration - Duplicate email error - Mandatory field validation
 
-import Framework.Functions.FieldRequiredException;
 import Framework.Functions.common;
 import Framework.Functions.signUp;
 import Framework.Functions.signupNegative;
@@ -41,7 +40,7 @@ public class SignupTest {
     }
 
     @Test
-    public void TC003_RegistrationWithEmptyRequiredFields() throws FieldRequiredException, Exception{
+    public void TC003_RegistrationWithEmptyRequiredFields() throws Exception{
         log().info("====TC002 Registration with Empty started====");
         sn.checkSignupReqFields();
     }

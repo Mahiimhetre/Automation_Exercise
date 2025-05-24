@@ -27,7 +27,7 @@ public class signupNegative {
         log().info("Negative test case executed successfully.");
     }
 
-    public void checkSignupReqFields() throws Exception, FieldRequiredException {
+    public void checkSignupReqFields() throws Exception{
         home.loginpage.click();
         // Clear input fields to simulate empty values
        sign.SignupName.clear();
@@ -42,8 +42,9 @@ public class signupNegative {
             if (common.isRequired(element)) {
                 if (isEmpty) {
                     log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    // Stop execution if validation fails
-                    throw new FieldRequiredException("Stopping execution: Required field is empty - " + element.getAttribute("data-qa"));
+                    // Pass the test and stop execution immediately
+                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                    return; // Stop further execution
                 }
             }
         }
@@ -55,8 +56,9 @@ public class signupNegative {
             if (common.isRequired(element)) {
                 if (isEmpty) {
                     log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    // Stop execution if validation fails
-                    Assert.fail("Stopping execution: Required field is empty - " + element.getAttribute("data-qa"));
+                    // Pass the test and stop execution immediately
+                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                    return; // Stop further execution
                 }
             }
         }
