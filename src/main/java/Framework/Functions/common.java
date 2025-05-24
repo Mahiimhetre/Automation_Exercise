@@ -44,39 +44,38 @@ public class common {
         value.load(fis);
         return value.getProperty(key);
     }
+
     public static boolean isRequired(WebElement element) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         boolean result = (Boolean) js.executeScript("return arguments[0].hasAttribute('required');", element);
-        if(result && (element.getText().isEmpty())){
-            log().info("There is Required Field: "+ element.getAttribute("data-qa"));
-        }
-        return result;
+
+        return result; // Return the actual attribute check result
     }
 
     // Implicit Wait (still applies globally)
     public static void impWait(WebDriver driver, int sec) throws Exception {
         driver.manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
-        log().info("Implicit wait set to " + sec + " seconds.");
+        log().info("Implicit wait set to '" + sec + "' seconds.");
     }
 
     // Explicit Wait - Element to be visible
-    public static String waitForVisibility(WebDriver driver, WebElement element, int sec) throws Exception {
+    public static WebElement waitForVisibility(WebDriver driver, WebElement element, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, sec);
-        log().info("Explicit wait for Element Visibility: " + element.getText() + " set to " + sec + " seconds.");
-        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
+        log().info("Explicit wait for Element Visibility: '" + element.getText() + "' set to " + sec + " seconds.");
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     // Explicit Wait - Element to be clickable
     public static WebElement waitForClickability(WebDriver driver, WebElement element, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, sec);
-        log().info("Explicit wait for Element Clickability: " + element.getText() + " set to " + sec + " seconds.");
+        log().info("Explicit wait for Element Clickability: '" + element.getText() + "' set to " + sec + " seconds.");
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     // Explicit Wait - Title contains specific text
     public static boolean waitForTitleContains(WebDriver driver, String partialTitle, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, sec);
-        log().info("Explicit wait for WebDriver Title: " + driver.getTitle() + " set to " + sec + " seconds.");
+        log().info("Explicit wait for WebDriver Title: '" + driver.getTitle() + "' set to " + sec + " seconds.");
         return wait.until(ExpectedConditions.titleContains(partialTitle));
     }
 

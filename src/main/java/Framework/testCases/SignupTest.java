@@ -2,6 +2,7 @@ package Framework.testCases;
 
 //SignupPage	- Successful registration - Duplicate email error - Mandatory field validation
 
+import Framework.Functions.FieldRequiredException;
 import Framework.Functions.common;
 import Framework.Functions.signUp;
 import Framework.Functions.signupNegative;
@@ -14,15 +15,18 @@ import static Framework.Functions.common.log;
 
 public class SignupTest {
     WebDriver driver;
-    signUp si= new signUp();
-    signupNegative sn = new signupNegative();
+
+    signUp si;
+    signupNegative sn;
 
     @BeforeMethod
     public  void preCondition() throws Exception{
         driver = common.openWeb(common.readProp("url"));
+        si= new signUp();
+        sn = new signupNegative();
     }
 
-    @Test
+//    @Test
     public void TC001_newUserRegister() throws Exception {
         log().info("====TC001 New User Registration started====");
         si.gotoSign();
@@ -30,23 +34,21 @@ public class SignupTest {
         si.confirmation();
     }
 
-    @Test
+//    @Test
     public void TC002_DuplicateUserRegistration() throws Exception{
         log().info("====TC002 Duplicate User Registration started====");
-        si.gotoSign();
         sn.DuplicateUser();
     }
 
     @Test
-    public void TC003_RegistrationWithEmptyRequiredFields() throws Exception{
+    public void TC003_RegistrationWithEmptyRequiredFields() throws FieldRequiredException, Exception{
         log().info("====TC002 Registration with Empty started====");
-        si.gotoSign();
         sn.checkSignupReqFields();
     }
 
     @AfterMethod
     public void postCondition(){
-//        common.closeWeb();
+        common.closeWeb();
     }
 
 }

@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
-
 import java.util.List;
 
 public class SignupPage {
@@ -26,10 +24,6 @@ public class SignupPage {
     @FindBy(xpath = "//*[@data-qa='signup-button']")
     public WebElement SignupBtn;
 
-    @FindBy(xpath = "//*[@action='/signup']//*[@required]")
-    public List<WebElement> RequiredFields;
-
-
     @FindBy(id = "id_gender1")
     public WebElement title;
 
@@ -46,8 +40,8 @@ public class SignupPage {
     @FindBy(id = "optin")
     public WebElement offers;
 
-    @FindBy(id = "name")
-    public WebElement name;
+    @FindBy(xpath = "//*[@class='form-control']")
+    public List<WebElement> formfields;
 
     @FindBy(id = "first_name")
     public WebElement fname;
@@ -83,12 +77,12 @@ public class SignupPage {
     public WebElement createBtn;
 
     @FindBy(xpath = "(//*[@data-qa='account-created']//following ::p)[1]")
-    public WebElement confirmation;
+    public WebElement createConfirmation;
 
     @FindBy(xpath = "//*[@data-qa='continue-button']")
     public WebElement continueBtn;
 
-    @FindBy(partialLinkText = "exist")
+    @FindBy(xpath = "//*[@data-qa='signup-button']//preceding-sibling::p")
     public WebElement existMsg;
 
 }

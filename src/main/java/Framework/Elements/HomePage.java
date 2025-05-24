@@ -24,7 +24,8 @@ public class HomePage {
     @FindBy(css = "a[href='/view_cart']")
     public WebElement cartpage;
 
-    @FindBy(xpath = "//a[@href='/login']")
+//    @FindBy(xpath = "//a[@href='/login']")
+    @FindBy(partialLinkText = "Login")
     public WebElement loginpage;
 
     @FindBy(linkText = "Contact us")

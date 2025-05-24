@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding waits to common Class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signupNegative.java" afterDir="false" />
+    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/FieldRequiredException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signupNegative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signupNegative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" afterDir="false" />
     </list>
@@ -121,14 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747918469650</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adding test case">
+      <option name="closed" value="true" />
+      <created>1748063571035</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748063571035</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding xpaths" />
     <MESSAGE value="Adding signup function" />
     <MESSAGE value="Adding waits to common Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding waits to common Class" />
+    <MESSAGE value="adding test case" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding test case" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -137,11 +144,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
