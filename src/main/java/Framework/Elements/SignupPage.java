@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeMethod;
+
+
+
+import java.util.List;
 
 public class SignupPage {
     WebDriver driver;
@@ -15,13 +18,17 @@ public class SignupPage {
     }
 
     @FindBy(xpath = "//*[@data-qa='signup-name']")
-    public WebElement signupName;
+    public WebElement SignupName;
 
     @FindBy(xpath = "//*[@data-qa='signup-email']")
     public WebElement SignupEmail;
 
     @FindBy(xpath = "//*[@data-qa='signup-button']")
     public WebElement SignupBtn;
+
+    @FindBy(xpath = "//*[@action='/signup']//*[@required]")
+    public List<WebElement> RequiredFields;
+
 
     @FindBy(id = "id_gender1")
     public WebElement title;
@@ -32,9 +39,6 @@ public class SignupPage {
     @FindBy(id = "days")public WebElement day;//select
     @FindBy(id = "months")public WebElement month;//select
     @FindBy(id = "years")public WebElement year;//select
-
-    @FindBy(id = "aswift_1")
-    public WebElement iframe;
 
     @FindBy(xpath = "//input[@id='newsletter']")
     public WebElement newsletter;
@@ -77,5 +81,14 @@ public class SignupPage {
 
     @FindBy(xpath = "//*[@data-qa='create-account']")
     public WebElement createBtn;
+
+    @FindBy(xpath = "(//*[@data-qa='account-created']//following ::p)[1]")
+    public WebElement confirmation;
+
+    @FindBy(xpath = "//*[@data-qa='continue-button']")
+    public WebElement continueBtn;
+
+    @FindBy(partialLinkText = "exist")
+    public WebElement existMsg;
 
 }

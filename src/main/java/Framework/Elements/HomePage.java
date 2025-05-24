@@ -25,9 +25,6 @@ public class HomePage {
     public WebElement cartpage;
 
     @FindBy(xpath = "//a[@href='/login']")
-    public WebElement signuppage;
-
-    @FindBy(xpath = "//a[@href='/login']")
     public WebElement loginpage;
 
     @FindBy(linkText = "Contact us")
@@ -38,5 +35,9 @@ public class HomePage {
 
     @FindBy(xpath = "//button[@id='subscribe']")
     public WebElement subscribeBtn;
+
+    @FindBy(xpath = "//*[@id='susbscribe_email' and @required]")
+    public WebElement SubscribeReqFields;
+
 
 }

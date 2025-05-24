@@ -4,16 +4,18 @@ package Framework.testCases;
 
 import Framework.Functions.common;
 import Framework.Functions.signUp;
-import org.openqa.selenium.chrome.ChromeDriver;
+import Framework.Functions.signupNegative;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.io.File;
 
 import static Framework.Functions.common.log;
 
 public class SignupTest {
-    ChromeDriver driver;
+    WebDriver driver;
+    signUp si= new signUp();
+    signupNegative sn = new signupNegative();
 
     @BeforeMethod
     public  void preCondition() throws Exception{
@@ -21,14 +23,30 @@ public class SignupTest {
     }
 
     @Test
-    public void register() throws Exception {
-        signUp si= new signUp();
-        log().info("====TC01 User Registration started====");
-        si.newUser();
+    public void TC001_newUserRegister() throws Exception {
+        log().info("====TC001 New User Registration started====");
+        si.gotoSign();
+        si.registration();
+        si.confirmation();
     }
 
-    public void postCondition() throws Exception{
-        common.closeWeb();
+    @Test
+    public void TC002_DuplicateUserRegistration() throws Exception{
+        log().info("====TC002 Duplicate User Registration started====");
+        si.gotoSign();
+        sn.DuplicateUser();
+    }
+
+    @Test
+    public void TC003_RegistrationWithEmptyRequiredFields() throws Exception{
+        log().info("====TC002 Registration with Empty started====");
+        si.gotoSign();
+        sn.checkSignupReqFields();
+    }
+
+    @AfterMethod
+    public void postCondition(){
+//        common.closeWeb();
     }
 
 }

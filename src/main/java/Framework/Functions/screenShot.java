@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class screenShot {
 
-    public static void takess(WebDriver driver, String testName) {
+    public static void capture(WebDriver driver, String testName) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File src = ts.getScreenshotAs(OutputType.FILE);
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());

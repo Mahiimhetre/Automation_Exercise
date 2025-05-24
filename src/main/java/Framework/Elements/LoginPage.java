@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.LinkedList;
+
 public class LoginPage {
     WebDriver driver;
     /**
@@ -27,5 +29,8 @@ public class LoginPage {
 
     @FindBy(xpath = "//*[@data-qa='login-button']")
     public WebElement loginBtn;
+
+    @FindBy(xpath = "//*[@action='/login']//*[@required]")
+    public LinkedList<WebElement> LoginReqFields;
 
 }

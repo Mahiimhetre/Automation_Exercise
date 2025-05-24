@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding signup function">
-      <change afterPath="$PROJECT_DIR$/src/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
+    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding waits to common Class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signupNegative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/CartPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/CheckoutPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/ProductPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/commonWaits.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/takeScreenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" afterDir="false" />
     </list>
@@ -63,21 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.signUp.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TestNG.SignupTest.register.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Mahesh/IdeaProjects/AutomationExercise/src",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.signUp.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TestNG.SignupTest.executor&quot;: &quot;Run&quot;,
+    &quot;TestNG.SignupTest.register.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mahesh/IdeaProjects/sampleProject&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
@@ -90,31 +87,6 @@
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java\Framework" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="SignupTest.register" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="AutomationExercise" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Framework.testCases.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Framework.testCases" />
-      <option name="MAIN_CLASS_NAME" value="Framework.testCases.SignupTest" />
-      <option name="METHOD_NAME" value="register" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="TestNG.SignupTest.register" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -141,12 +113,22 @@
       <option name="project" value="LOCAL" />
       <updated>1747831465462</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding waits to common Class">
+      <option name="closed" value="true" />
+      <created>1747918469650</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747918469650</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding xpaths" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding xpaths" />
+    <MESSAGE value="Adding signup function" />
+    <MESSAGE value="Adding waits to common Class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding waits to common Class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -155,6 +137,11 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

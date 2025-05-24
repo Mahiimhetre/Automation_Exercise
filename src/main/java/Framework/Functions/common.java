@@ -2,10 +2,7 @@ package Framework.Functions;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -47,9 +44,13 @@ public class common {
         value.load(fis);
         return value.getProperty(key);
     }
-
-    public void defWait() throws InterruptedException{
-        Thread.sleep(5000);
+    public static boolean isRequired(WebElement element) throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        boolean result = (Boolean) js.executeScript("return arguments[0].hasAttribute('required');", element);
+        if(result && (element.getText().isEmpty())){
+            log().info("There is Required Field: "+ element.getAttribute("data-qa"));
+        }
+        return result;
     }
 
     // Implicit Wait (still applies globally)
@@ -59,10 +60,10 @@ public class common {
     }
 
     // Explicit Wait - Element to be visible
-    public static WebElement waitForVisibility(WebDriver driver, WebElement element, int sec) throws Exception {
+    public static String waitForVisibility(WebDriver driver, WebElement element, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, sec);
         log().info("Explicit wait for Element Visibility: " + element.getText() + " set to " + sec + " seconds.");
-        return wait.until(ExpectedConditions.visibilityOf(element));
+        return wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
 
     // Explicit Wait - Element to be clickable
