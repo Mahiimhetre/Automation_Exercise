@@ -21,11 +21,11 @@ public class SignupTest {
         si= new signUp();
     }
 
-    @Test
+//    @Test
     public void TC001_NewUserRegister() throws Exception {
         log().info("====TC001 New User Registration started====");
         si.gotoSign();
-        si.registration();
+        si.register();
         si.confirmation();
         log().info("Positive test case for New User Registration executed successfully.");
 

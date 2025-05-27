@@ -25,8 +25,9 @@ public class screenShot {
         }
     }
 
-    public static void captureOnFailure(WebDriver driver, ITestResult result) {
+    public static void captureOnFailure(WebDriver driver, ITestResult result) throws Exception {
         if (result.getStatus() == ITestResult.FAILURE) {
+            Thread.sleep(1000);
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
                 FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png"));

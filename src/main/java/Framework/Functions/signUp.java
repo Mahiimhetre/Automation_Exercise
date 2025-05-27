@@ -28,7 +28,7 @@ public class signUp {
         log().info("After checking The 'Name' and 'Email' field going to fill the Registration Form.");
     }
 
-    public void registration()  throws Exception {
+    public void register()  throws Exception {
         sign.title.click();
         sign.pass.sendKeys(common.readProp("password"));
 
