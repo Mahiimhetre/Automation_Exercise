@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,18 @@ public class screenShot {
             FileUtils.copyFile(src, path);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void captureOnFailure(WebDriver driver, ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png"));
+                System.out.println("Screenshot saved for failed test: " + result.getName());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

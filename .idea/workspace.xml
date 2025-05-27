@@ -5,22 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/cart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/checkOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/testBase/BaseClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Framework/SuitFiles/SignUp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signupNegative.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/CartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/SearchTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,22 +56,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.signUp.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG.SignupTest.executor&quot;: &quot;Run&quot;,
-    &quot;TestNG.SignupTest.register.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mahesh/IdeaProjects/Allure_Report_Creation&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.signUp.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.SignupTest.executor": "Run",
+    "TestNG.SignupTest.register.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Program Files/Java/jdk-17",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
@@ -150,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748085234879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="adding test case">
+      <option name="closed" value="true" />
+      <created>1748344304763</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748344304763</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

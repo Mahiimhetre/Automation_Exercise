@@ -11,6 +11,5 @@ public class LoginTest {
     @BeforeMethod
     public void preCondition() throws Exception{
         driver = common.openWeb(common.readProp("url"));
-
     }
 }
