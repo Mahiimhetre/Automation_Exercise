@@ -141,7 +141,7 @@ public class signUp {
             );
             log().info("Validation Message: " + validationMsg);
             /* Pass the test and stop execution immediately */
-            Assert.assertTrue(true, "Validation correctly triggered for required field: " + sign.SignupEmail.getAttribute("data-qa"));
+            Assert.assertFalse(true, "Validation correctly triggered for required field: " + sign.SignupEmail.getAttribute("data-qa"));
             return; // Stop further execution
         }
         log().info("Required field is correctly filled with Details.");

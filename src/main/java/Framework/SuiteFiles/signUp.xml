@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SingUp Suite">
-    <test verbose="2" name="SignUp Package test">
-        <packages>
-            <package name="packageName"></package>
-        </packages>
+<suite name="SingUp Suite" parallel="methods" thread-count="5">
+    <test name="Executing Parallel Classes" >
         <classes>
-            <class name="Framework.testCases.SignupTest"></class>
+            <class name="Framework.testCases.SignupTest">
+                <methods>
+<!--                    <include name="testSignUp"/>-->
+                    <include name="TC002_DuplicateUserRegistration"/>
+                    <include name="TC003_RegistrationWithEmptyRequiredFields"/>
+                    <include name="TC004_RegisterWithInvalidEmail"/>
+                </methods>
+            </class>
+
         </classes>
     </test>
 </suite>
