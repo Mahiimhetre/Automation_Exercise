@@ -64,7 +64,7 @@ public class common {
      * @author : Mr.MAHESH
      */
     public static String readProp(String key) throws Exception{
-        File file = new File(System.getProperty("user.dir") + "/src/main/java/Framework/testData/AutomationExcercise.properties");
+        File file = new File(System.getProperty("user.dir") + "/src/test/java/Framework/testData/AutomationExcercise.properties");
         FileInputStream fis = new FileInputStream(file);
         Properties value = new Properties();
         value.load(fis);
