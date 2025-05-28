@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SingUp Suite" parallel="methods" thread-count="5">
+<suite name="SingUp Suite" parallel="methods" thread-count="3">
     <test name="Executing Parallel Classes" >
         <classes>
             <class name="Framework.testCases.SignupTest">
                 <methods>
-<!--                    <include name="testSignUp"/>-->
+                    <include name="TC001_ValidUserRegistration"/>
                     <include name="TC002_DuplicateUserRegistration"/>
                     <include name="TC003_RegistrationWithEmptyRequiredFields"/>
                     <include name="TC004_RegisterWithInvalidEmail"/>

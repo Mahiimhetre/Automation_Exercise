@@ -16,8 +16,12 @@ import java.util.Date;
 import static Framework.Functions.common.log;
 
 public class screenShot {
-
-    // This method captures a screenshot and saves it to the specified path with a unique name based on the test name and timestamp.
+    /**
+     * Captures a screenshot and saves it to the specified path with a unique name based on the test name and timestamp.
+     * @author Mr.MAHESH
+     * @param driver The WebDriver instance used for taking the screenshot.
+     * @param testName The name of the test, used to create a unique filename for the screenshot.
+     */
     public static void capture(WebDriver driver, String testName) {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File src = ts.getScreenshotAs(OutputType.FILE);
@@ -30,7 +34,14 @@ public class screenShot {
         }
     }
 
-    // This method captures a screenshot when a test fails and attaches it to the Allure report.
+    /**
+     * Captures a screenshot on test failure and attaches it to the Allure report.
+     *
+     * @param driver The WebDriver instance used for taking the screenshot.
+     * @param result The ITestResult instance containing the test result details.
+     * @throws Exception If an error occurs while capturing or saving the screenshot.
+     * @author Mr.MAHESH
+     */
     public static void captureOnFailure(WebDriver driver, ITestResult result) throws Exception {
         if (result.getStatus() == ITestResult.FAILURE) {
             Thread.sleep(1000); // Wait for a second to ensure the page is fully loaded before capturing the screenshot.

@@ -22,7 +22,7 @@ public class SignupTest {
         si= new signUp();
     }
 
-//    @Test
+    @Test
     public void TC001_NewUserRegister() throws Exception {
         log().info("====TC001 New User Registration started====");
         si.gotoSign();

@@ -4,11 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="">
+    <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding Image into Allure Reoprt">
+      <change afterPath="$PROJECT_DIR$/Documentations/QA_Guide.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/SuiteFiles/signUp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Framework/SuiteFiles/signUp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CartPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/CartPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/CheckoutPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/CheckoutPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/ProductPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/ProductPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Elements/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Elements/SignupPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/checkOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/checkOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/screenShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/screenShot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/Functions/signUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/signUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/SuiteFiles/signUp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/signUp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/SuiteFiles/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testBase/BaseClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testCases/CartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/CheckoutTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testCases/CheckoutTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testCases/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testCases/SearchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testCases/SignupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testCases/SignupTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Framework/testData/AutomationExcercise.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/testData/AutomationExcercise.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +86,7 @@
     &quot;TestNG.SignupTest.register.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/jdk-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mahesh/IdeaProjects/AutomationExercise&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -74,8 +95,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise" />
+      <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Mahesh\IdeaProjects\AutomationExercise\src\main\java\Framework\SuiteFiles" />
@@ -174,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748370604842</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Adding Image into Allure Reoprt">
+      <option name="closed" value="true" />
+      <created>1748377727171</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748377727171</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,7 +212,8 @@
     <MESSAGE value="Adding waits to common Class" />
     <MESSAGE value="adding test case" />
     <MESSAGE value="adding reports" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding reports" />
+    <MESSAGE value="Adding Image into Allure Reoprt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Image into Allure Reoprt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

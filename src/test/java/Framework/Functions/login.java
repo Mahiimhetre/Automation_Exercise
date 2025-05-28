@@ -9,6 +9,11 @@ public class login {
     HomePage hp = new HomePage(driver);
     LoginPage lp = new LoginPage(driver);
 
+    /**
+     * This method performs a login operation with valid credentials.
+     * @throws Exception if an error occurs during the login process
+     * @author Mr.MAHESH
+     */
     public void validCreds() throws Exception{
         hp.loginpage.click();
 
@@ -18,6 +23,11 @@ public class login {
         lp.loginBtn.click();
     }
 
+    /**
+     * This method performs a login operation with invalid email.
+     * @throws Exception if an error occurs during the login process
+     * @author Mr.MAHESH
+     */
     public void inValidEmail() throws Exception{
         hp.loginpage.click();
 
@@ -26,6 +36,12 @@ public class login {
 
         lp.loginBtn.click();
     }
+
+    /**
+     * This method performs a login operation with invalid password.
+     * @throws Exception if an error occurs during the login process
+     * @author Mr.MAHESH
+     */
     public void inValidPass() throws Exception{
         hp.loginpage.click();
 
@@ -35,6 +51,11 @@ public class login {
         lp.loginBtn.click();
     }
 
+    /**
+     * This method performs a login operation with empty fields.
+     * @throws Exception if an error occurs during the login process
+     * @author Mr.MAHESH
+     */
     public void emptyFields() throws Exception{
         hp.loginpage.click();
 
