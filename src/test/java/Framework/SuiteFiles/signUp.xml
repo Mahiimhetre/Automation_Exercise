@@ -5,16 +5,13 @@
         <classes>
             <class name="Framework.testCases.SignupTest">
                 <methods>
-                    <include name="TC002_DuplicateUserRegistration"/>
-                    <include name="TC003_RegistrationWithEmptyRequiredFields"/>
-                    <include name="TC004_RegisterWithInvalidEmail"/>
+                    <include name="TC001_SignupWithValidData"/>
+                    <include name="TC002_SignupDuplicateUser"/>
+                    <include name="TC003_SignupWithEmptyRequiredFields"/>
+                    <include name="TC004_SignupWithInvalidEmail"/>
                 </methods>
             </class>
         </classes>
     </test>
 </suite>
-
-
-
-<!--to execute the test cases in parallel. we have to provide driver instance in the test class as ThreadLocal variable.-->
 

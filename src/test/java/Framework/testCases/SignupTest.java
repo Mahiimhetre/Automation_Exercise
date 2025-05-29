@@ -23,10 +23,10 @@ public class SignupTest {
     }
 
     @Test
-    public void TC001_NewUserRegister() throws Exception {
+    public void TC001_SignupWithValidData() throws Exception {
         log().info("====TC001 New User Registration started====");
         si.gotoSign();
-        si.register();
+        si.fillDetails();
         si.confirmation();
         log().info("Positive test case for New User Registration executed successfully.");
 
@@ -38,7 +38,7 @@ public class SignupTest {
     @Feature("Feature1: Registration")
     @Story("Story1: Duplicate Registration")
     @Severity(SeverityLevel.BLOCKER)
-    public void TC002_DuplicateUserRegistration() throws Exception{
+    public void TC002_SignupDuplicateUser() throws Exception{
         log().info("====TC002 Duplicate User Registration started====");
         si.DuplicateUser();
         log().info("Negative test case for Duplicate user Registration executed successfully.");
@@ -47,11 +47,11 @@ public class SignupTest {
 
     @Test(priority = 2, description = "Registration with Empty Required Fields Test")
     @Description("This test case checks the scenario where a user tries to register without filling in the required fields.")
-    @Epic("User Registration")
-    @Feature("Feature1: Registration")
+    @Epic("User SignUp")
+    @Feature("Feature1: SignUp")
     @Story("Story2: Empty Required Fields")
     @Severity(SeverityLevel.CRITICAL)
-    public void TC003_RegistrationWithEmptyRequiredFields() throws Exception{
+    public void TC003_SignupWithEmptyRequiredFields() throws Exception{
         log().info("====TC003 Registration with Empty Required Fields started====");
         si.checkSignupReqFields();
         log().info("Negative test case for required fields executed successfully.");
@@ -64,7 +64,7 @@ public class SignupTest {
     @Feature("Feature1: Registration")
     @Story("Story3: Invalid Email Registration")
     @Severity(SeverityLevel.NORMAL)
-    public void TC004_RegisterWithInvalidEmail() throws Exception{
+    public void TC004_SignupWithInvalidEmail() throws Exception{
         log().info("====TC004 Registration with Invalid Email Fields started====");
         si.invalidEmailRegistration();
     }
@@ -72,7 +72,7 @@ public class SignupTest {
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         screenShot.captureOnFailure(driver,result);
-        common.closeWeb();
+        common.closeWeb(driver);
     }
 
 }

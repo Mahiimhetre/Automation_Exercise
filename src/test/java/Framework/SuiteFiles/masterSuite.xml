@@ -3,5 +3,6 @@
 <suite name="Master Suite" >
    <suite-files>
        <suite-file path="signUp.xml"/>
+       <suite-file path="loginTest.xml"/>
    </suite-files>
 </suite>

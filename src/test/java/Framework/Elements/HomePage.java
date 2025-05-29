@@ -22,14 +22,16 @@ public class HomePage {
     public WebElement  prodPage;
 
     @FindBy(css = "a[href='/view_cart']")
-    public WebElement cartpage;
+    public WebElement cartPage;
 
-//    @FindBy(xpath = "//a[@href='/login']")
+    @FindBy(partialLinkText = "Login")
+    public WebElement signupPage;
+
     @FindBy(partialLinkText = "Login")
     public WebElement loginpage;
 
     @FindBy(linkText = "Contact us")
-    public WebElement Contactpage;
+    public WebElement ContactPage;
 
     @FindBy(id = "subscribe_email")
     public WebElement subscriberEmail;

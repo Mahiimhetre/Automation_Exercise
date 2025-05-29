@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,6 +86,23 @@ public class common {
         return result; // Return the actual attribute check result
     }
 
+    // This method checks the validity of a form field using JavaScript and logs the validation message if it fails.
+    public static boolean checkFieldValidity(WebDriver driver, WebElement element) throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        Boolean isValid = (Boolean) js.executeScript(
+                "return arguments[0].reportValidity();", element
+        );
+
+        if (!isValid) {
+            String validationMsg = (String) js.executeScript(
+                    "return arguments[0].validationMessage;", element
+            );
+            log().info("Validation Message: " + validationMsg);
+            return true; // Return true if validation fails
+        }
+        return false; // Return false if validation passes
+    }
+
     // Implicit Wait (still applies globally)
     public static void impWait(WebDriver driver, int sec) throws Exception {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
@@ -137,7 +155,7 @@ public class common {
         });
     }
 
-    public static void closeWeb() throws Exception {
+    public static void closeWeb(WebDriver driver) throws Exception {
         log().info("==============WebDriver signing off==============");
         driver.quit();
     }

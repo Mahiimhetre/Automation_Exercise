@@ -2,8 +2,11 @@ package Framework.Functions;
 
 import Framework.Elements.HomePage;
 import Framework.Elements.LoginPage;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import static Framework.Functions.common.driver;
+import static Framework.Functions.common.log;
 
 public class login {
     HomePage hp = new HomePage(driver);
@@ -17,10 +20,11 @@ public class login {
     public void validCreds() throws Exception{
         hp.loginpage.click();
 
-        lp.loginBtn.sendKeys("email");
-        lp.loginPass.sendKeys("password");
+        lp.loginEmail.sendKeys(common.readProp("email"));
+        lp.loginPass.sendKeys(common.readProp("password"));
 
         lp.loginBtn.click();
+        Assert.assertTrue(common.waitForVisibility(driver, lp.loggedInUser,10).isDisplayed(), "Login failed or user is not logged in...");
     }
 
     /**
@@ -31,10 +35,18 @@ public class login {
     public void inValidEmail() throws Exception{
         hp.loginpage.click();
 
-        lp.loginEmail.sendKeys("invEmail");
-        lp.loginPass.sendKeys("password");
+        lp.loginEmail.sendKeys(common.readProp("invEmail"));
+        lp.loginPass.sendKeys(common.readProp("password"));
 
         lp.loginBtn.click();
+        log().info("Checking for Credentials Validity...");
+
+        if (common.checkFieldValidity(driver, lp.loginEmail)) {
+            Assert.assertTrue(true, "Validation correctly triggered for required field: " + lp.loginEmail.getAttribute("data-qa"));
+            return; // Stop further execution if validation fails
+        }else {
+            Assert.fail("Error message not displayed for invalid email.");
+        }
     }
 
     /**
@@ -45,10 +57,17 @@ public class login {
     public void inValidPass() throws Exception{
         hp.loginpage.click();
 
-        lp.loginEmail.sendKeys("email");
-        lp.loginPass.sendKeys("invPassword");
+        lp.loginEmail.sendKeys(common.readProp("email"));
+        lp.loginPass.sendKeys(common.readProp("invPassword"));
 
         lp.loginBtn.click();
+        log().info("Checking for Credentials Validity...");
+        if(common.waitForVisibility(driver, lp.errorMsg, 10).isDisplayed()) {
+            Assert.assertTrue(true, "Validation correctly triggered for invalid email/password: " + lp.errorMsg.getText());
+        }
+        else {
+            Assert.fail("Error message not displayed for invalid credentials.");
+        }
     }
 
     /**
@@ -63,6 +82,21 @@ public class login {
         lp.loginPass.clear();
 
         lp.loginBtn.click();
+
+        for (WebElement element : lp.loginReqFields) {
+            boolean isEmpty = element.getAttribute("value") == null || element.getAttribute("value").isEmpty();
+
+            if (common.isRequired(element)) {
+                if (isEmpty) {
+                    log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                    /* Pass the test and stop execution immediately */
+                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                    return; // Stop further execution
+                }
+            } else {
+                Assert.fail("Validation not correctly triggered for required field: " + element.getAttribute("data-qa"));
+            }
+        }
     }
 }
 

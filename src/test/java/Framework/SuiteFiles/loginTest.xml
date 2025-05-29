@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SingUp Suite">
+    <test name="Login Test Classes" >
+        <classes>
+            <class name="Framework.testCases.LoginTest">
+                <methods>
+                    <include name="TC001_LoginWithValidCreds"/>
+                    <include name="TC002_LoginWithInvalidEmail"/>
+                    <include name="TC003_LoginWithInvalidPassword"/>
+                    <include name="TC004_LoginWithEmptyFields"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+

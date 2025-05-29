@@ -25,13 +25,12 @@ public class signUp {
      * @throws Exception if an error occurs during navigation or field interaction
      */
     public void gotoSign() throws Exception {
-
-        home.loginpage.click();
+        home.signupPage.click();
 
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
-        log().info("After checking The 'Name' and 'Email' field going to fill the Registration Form.");
+        log().info("After checking The 'Name' and 'Email' field going to fill the Registration Form...");
     }
 
     /**
@@ -40,7 +39,12 @@ public class signUp {
      * @author Mr.MAHESH
      * @throws Exception if an error occurs during form filling or interaction
      */
-    public void register()  throws Exception {
+    public void fillDetails()  throws Exception {
+
+        // Wait for the page to load and title to match expected value
+        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup", "Page title does not match after navigating to Signup page.");
+
+        log().info("Filling the Registration Form with Details...");
         sign.title.click();
         sign.pass.sendKeys(common.readProp("password"));
 
@@ -77,8 +81,14 @@ public class signUp {
 
     public void confirmation() throws Exception {
         String message = common.waitForVisibility(driver, sign.createConfirmation, 15).getText();
-        Assert.assertTrue(message.contains("Congratulation"));
-        log().info(sign.createConfirmation.getText());
+
+        log().info("Checking for Confirmation Message...");
+
+        if(message.contains("Congratulation")) {
+            Assert.assertTrue(true,"Confirmation message is displayed: " + message);
+        } else {
+            Assert.fail("Confirmation message is not displayed or does not contain expected text.");
+        }
 
         sign.continueBtn.click();
     }
@@ -90,13 +100,18 @@ public class signUp {
      * @author Mr.MAHESH
      */
     public void DuplicateUser() throws Exception {
-        home.loginpage.click();
+        home.signupPage.click();
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
 
         // Validate the error message
-        Assert.assertTrue(common.waitForVisibility(driver,sign.existMsg,10).isDisplayed(), sign.existMsg.getText());
+        if(common.waitForVisibility(driver, sign.existMsg, 10).isDisplayed()) {
+            log().info("Checking for Duplicate User Registration...");
+            Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.existMsg.getText());
+        } else {
+            Assert.fail("Error message not displayed for duplicate email.");
+        }
     }
 
     /**
@@ -106,7 +121,7 @@ public class signUp {
      * @author Mr.MAHESH
      */
     public void checkSignupReqFields() throws Exception{
-        home.loginpage.click();
+        home.signupPage.click();
         // Clear input fields to simulate empty values
         sign.SignupName.clear();
         sign.SignupEmail.clear();
@@ -141,7 +156,7 @@ public class signUp {
             }
         }
         // Required field has value, so test continues
-        log().info("All Required field is correctly filled with Details");
+        log().info("All Required field is correctly filled with Details...");
     }
 
     /**
@@ -151,31 +166,23 @@ public class signUp {
      * @author Mr.MAHESH
      */
     public void invalidEmailRegistration() throws Exception{
-        home.loginpage.click();
+        home.signupPage.click();
         sign.SignupName.sendKeys(common.readProp("first_name"));
         sign.SignupEmail.sendKeys(common.readProp("invEmail"));
         sign.SignupBtn.click();
 
         log().info("Checking for Field Validity...");
 
-        // Check validity and get validation message for the 'Name' field
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        Boolean isValid = (Boolean) js.executeScript(
-                "return arguments[0].reportValidity();",sign.SignupEmail
-        );
-
-        if (!isValid) {
-            String validationMsg = (String) js.executeScript(
-                    "return arguments[0].validationMessage;",sign.SignupEmail
-            );
-            log().info("Validation Message: " + validationMsg);
-            /* Pass the test and stop execution immediately */
+        if (common.checkFieldValidity(driver, sign.SignupEmail)) {
             Assert.assertTrue(true, "Validation correctly triggered for required field: " + sign.SignupEmail.getAttribute("data-qa"));
-            return; // Stop further execution
+            return; // Stop further execution if validation fails
         }
-        log().info("Required field is correctly filled with Details.");
+        else {
+            Assert.fail("Error message not displayed for invalid email.");
+        }
 
     }
 }
+
 
 
