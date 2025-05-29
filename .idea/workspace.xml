@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df466f22-c558-4a1e-b462-ff17cc4e7b7b" name="Changes" comment="Adding Image into Allure Reoprt">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Documentations/QA_Guide.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/masterSuite.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Framework/Functions/common.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/Functions/common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/signUp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/signUp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Framework/SuiteFiles/testng.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +73,11 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "XML"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -190,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748454458467</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="moving files from src/main to src/test for jenkins">
+      <option name="closed" value="true" />
+      <created>1748455747343</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748455747343</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -199,8 +215,8 @@
     <MESSAGE value="Adding waits to common Class" />
     <MESSAGE value="adding test case" />
     <MESSAGE value="adding reports" />
-    <MESSAGE value="Adding Image into Allure Reoprt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Image into Allure Reoprt" />
+    <MESSAGE value="Adding Image into Allure Report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Image into Allure Report" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
