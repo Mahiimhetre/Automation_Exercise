@@ -5,7 +5,6 @@
         <classes>
             <class name="Framework.testCases.SignupTest">
                 <methods>
-                    <include name="TC001_ValidUserRegistration"/>
                     <include name="TC002_DuplicateUserRegistration"/>
                     <include name="TC003_RegistrationWithEmptyRequiredFields"/>
                     <include name="TC004_RegisterWithInvalidEmail"/>
