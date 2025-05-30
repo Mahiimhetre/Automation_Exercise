@@ -1,5 +1,6 @@
 package Framework.Functions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.*;
@@ -28,8 +29,7 @@ public class common {
      */
     public static WebDriver openWeb(String url) throws Exception {
         //--------------------------------For ChromeDriver Only---------------------------------------------------------
-        String path = System.getProperty("user.dir") +"/chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver",path); // Set the path to your ChromeDriver executable
+        WebDriverManager.chromedriver().setup(); // Automatically sets up the ChromeDriver executable
         driver = new ChromeDriver();
         log().info("==============ChromeDriver Initialized Successfully.==============");
         driver.manage().window().maximize();

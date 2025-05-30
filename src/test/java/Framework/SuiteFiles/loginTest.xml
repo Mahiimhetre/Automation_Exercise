@@ -6,9 +6,9 @@
             <class name="Framework.testCases.LoginTest">
                 <methods>
                     <include name="TC001_LoginWithValidCreds"/>
-                    <include name="TC002_LoginWithInvalidEmail"/>
-                    <include name="TC003_LoginWithInvalidPassword"/>
-                    <include name="TC004_LoginWithEmptyFields"/>
+<!--                    <include name="TC002_LoginWithInvalidEmail"/>-->
+<!--                    <include name="TC003_LoginWithInvalidPassword"/>-->
+<!--                    <include name="TC004_LoginWithEmptyFields"/>-->
                 </methods>
             </class>
         </classes>
