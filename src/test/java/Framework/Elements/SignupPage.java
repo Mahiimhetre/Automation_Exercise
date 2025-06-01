@@ -83,6 +83,6 @@ public class SignupPage {
     public WebElement continueBtn;
 
     @FindBy(xpath = "//*[@data-qa='signup-button']//preceding-sibling::p")
-    public WebElement existMsg;
+    public WebElement errorMsg;
 
 }

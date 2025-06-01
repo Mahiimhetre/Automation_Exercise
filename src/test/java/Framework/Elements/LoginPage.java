@@ -36,6 +36,6 @@ public class LoginPage {
     public WebElement errorMsg;
 
     @FindBy(xpath = "//a[@href='/logout']")
-    public WebElement loggedInUser;
+    public WebElement logoutBtn;
 
 }

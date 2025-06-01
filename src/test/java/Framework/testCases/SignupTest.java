@@ -22,9 +22,9 @@ public class SignupTest {
         si= new SignUp();
     }
 
-    @Test
-    public void TC001_SignupWithValidData() throws Exception {
-        log().info("====TC001 New User Registration started====");
+    @Test (priority = 0, description = "New User Registration Test")
+    public void TC_Signup_01() throws Exception {
+        log().info("====TC_Signup_01 New User Registration started====");
         si.gotoSign();
         si.fillDetails();
         si.confirmation();
@@ -38,8 +38,8 @@ public class SignupTest {
     @Feature("Feature1: Registration")
     @Story("Story1: Duplicate Registration")
     @Severity(SeverityLevel.BLOCKER)
-    public void TC002_SignupDuplicateUser() throws Exception{
-        log().info("====TC002 Duplicate User Registration started====");
+    public void TC_Signup_02() throws Exception{
+        log().info("====TC_Signup_02 Duplicate User Registration started====");
         si.DuplicateUser();
         log().info("Negative test case for Duplicate user Registration executed successfully...");
 
@@ -51,23 +51,37 @@ public class SignupTest {
     @Feature("Feature1: SignUp")
     @Story("Story2: Empty Required Fields")
     @Severity(SeverityLevel.CRITICAL)
-    public void TC003_SignupWithEmptyRequiredFields() throws Exception{
-        log().info("====TC003 Registration with Empty Required Fields started====");
+    public void TC_Signup_03() throws Exception{
+        log().info("====TC_Signup_03 Signup with Empty Required Fields started====");
         si.checkSignupReqFields();
         log().info("Negative test case for required fields executed successfully...");
 
     }
 
-    @Test(priority = 3, description = "Registration with Invalid Email Test")
-    @Description("This test case checks the scenario where a user tries to register with an invalid email format.")
+    @Test(priority = 3, description = "Signup with Invalid Email Test")
+    @Description("This test case checks the scenario where a user tries to Signup with an invalid email format.")
     @Epic("User Registration")
     @Feature("Feature1: Registration")
     @Story("Story3: Invalid Email Registration")
     @Severity(SeverityLevel.NORMAL)
-    public void TC004_SignupWithInvalidEmail() throws Exception{
-        log().info("====TC004 Registration with Invalid Email Fields started====");
+    public void TC_Signup_04() throws Exception{
+        log().info("====TC_Signup_04 Signup with Invalid Email Fields started====");
         si.invalidEmailRegistration();
-        log().info("Negative test case for Invalid Email Registration executed successfully...");
+        log().info("Negative test case for Invalid Email Signup executed successfully...");
+    }
+
+    @Test(priority = 4, description = "Signup with Special Character in Name Test")
+    public void TC_Signup_05() throws Exception{
+        log().info("====TC_Signup_05 Signup with Special Character in Name started====");
+        si.specialCharInName();
+        log().info("Negative test case for Special Character in Name Signup executed successfully...");
+    }
+
+    @Test(priority = 5, description = "Signup with Invalid Password Test")
+    public void TC_Signup_06() throws Exception {
+        log().info("====TC_Signup_06 Signup with Upper case in Email started====");
+        si.caseSensitiveEmail();
+        log().info("Negative test case for Invalid Password Signup executed successfully...");
     }
 
     @AfterMethod

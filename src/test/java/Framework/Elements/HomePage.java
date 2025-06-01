@@ -18,6 +18,9 @@ public class HomePage {
         PageFactory.initElements(driver,this);
     }
 
+    @FindBy(xpath = "//a[@href='/']")
+    public WebElement homePage;
+
     @FindBy(xpath = "//a[@href='/products']")
     public WebElement  prodPage;
 
@@ -25,10 +28,7 @@ public class HomePage {
     public WebElement cartPage;
 
     @FindBy(partialLinkText = "Login")
-    public WebElement signupPage;
-
-    @FindBy(partialLinkText = "Login")
-    public WebElement loginpage;
+    public WebElement loginSignupPage;
 
     @FindBy(linkText = "Contact us")
     public WebElement ContactPage;

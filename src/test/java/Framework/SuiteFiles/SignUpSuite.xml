@@ -5,10 +5,12 @@
         <classes>
             <class name="Framework.testCases.SignupTest">
                 <methods>
-                    <include name="TC001_SignupWithValidData"/>
-                    <include name="TC002_SignupDuplicateUser"/>
-                    <include name="TC003_SignupWithEmptyRequiredFields"/>
-                    <include name="TC004_SignupWithInvalidEmail"/>
+                    <include name="TC_Signup_01"/>
+                    <include name="TC_Signup_02"/>
+                    <include name="TC_Signup_03"/>
+                    <include name="TC_Signup_04"/>
+                    <include name="TC_Signup_05"/>
+                    <include name="TC_Signup_06"/>
                 </methods>
             </class>
         </classes>

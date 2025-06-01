@@ -25,7 +25,7 @@ public class SignUp {
      * @throws Exception if an error occurs during navigation or field interaction
      */
     public void gotoSign() throws Exception {
-        home.signupPage.click();
+        home.loginSignupPage.click();
         log().info("Navigating to Signup Page...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
@@ -101,7 +101,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void DuplicateUser() throws Exception {
-        home.signupPage.click();
+        home.loginSignupPage.click();
         log().info("Navigating to Signup Page for Duplicate User Registration...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
@@ -109,8 +109,8 @@ public class SignUp {
 
         log().info("Checking for Duplicate User Registration...");
         // Validate the error message
-        if(common.waitForVisibility(driver, sign.existMsg, 10).isDisplayed()) {
-            Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.existMsg.getText());
+        if(common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed()) {
+            Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
         } else {
             Assert.fail("Error message not displayed for duplicate email.");
         }
@@ -124,7 +124,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void checkSignupReqFields() throws Exception{
-        home.signupPage.click();
+        home.loginSignupPage.click();
         log().info("Navigating to Signup Page to check Required Fields...");
         // Clear input fields to simulate empty values
         sign.SignupName.clear();
@@ -135,7 +135,7 @@ public class SignUp {
         List<WebElement> SignupFields = Arrays.asList(sign.SignupName, sign.SignupEmail);
 
         for (WebElement element : SignupFields) {
-            boolean isEmpty = element.getAttribute("value") == null || element.getAttribute("value").isEmpty();
+            boolean isEmpty = (element.getAttribute("value") == null) || element.getAttribute("value").isEmpty();
 
             if (common.isRequired(element)) {
                 if (isEmpty) {
@@ -150,7 +150,7 @@ public class SignUp {
         log().info("Checking for Required Fields Validation in the Registration Form...");
 
         for (WebElement element : sign.formfields) {
-            boolean isEmpty = element.getAttribute("value") == null || element.getAttribute("value").isEmpty();
+            boolean isEmpty = element.getAttribute("value").isEmpty() || (element.getAttribute("value") == null);
 
             if (common.isRequired(element)) {
                 if (isEmpty) {
@@ -172,7 +172,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void invalidEmailRegistration() throws Exception{
-        home.signupPage.click();
+        home.loginSignupPage.click();
         log().info("Navigating to Signup Page for Invalid Email Registration...");
         sign.SignupName.sendKeys(common.readProp("first_name"));
         sign.SignupEmail.sendKeys(common.readProp("invEmail"));
@@ -188,6 +188,44 @@ public class SignUp {
             Assert.fail("Error message not displayed for invalid email.");
         }
         log().info("Invalid Email Registration validation completed successfully...");
+    }
+
+    public void specialCharInName() throws Exception {
+       home.loginSignupPage.click();
+
+        log().info("Navigating to Signup Page for Duplicate User Registration...");
+        sign.SignupName.sendKeys(common.readProp("sp_char_name"));
+        sign.SignupEmail.sendKeys(common.readProp("email"));
+        sign.SignupBtn.click();
+
+        log().info("Checking for error massage for Special Character in Image...");
+        // Validate the error message
+        if(common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed()) {
+            Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
+        } else {
+            Assert.fail("Error message not displayed for Special Character in Name.");
+        }
+
+        log().info("Special Character Validation completed successfully...");
+    }
+
+    public void caseSensitiveEmail() throws Exception {
+        home.loginSignupPage.click();
+        log().info("Navigating to Signup Page for Case Sensitive Email Registration...");
+        sign.SignupName.sendKeys(common.readProp("full_name"));
+        sign.SignupEmail.sendKeys(common.readProp("email").toUpperCase()); // Using uppercase email
+        sign.SignupBtn.click();
+
+        log().info("Checking for Case Sensitive Email Validation...");
+
+        try {
+            boolean isErrorDisplayed = common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed();
+            Assert.assertTrue(isErrorDisplayed, "Validation correctly triggered for case sensitive email: " + sign.errorMsg.getText());
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            Assert.fail("Error message element not found for case sensitive email...");
+        }
+
+        log().info("Case Sensitive Email SignUp validation completed successfully...");
     }
 }
 

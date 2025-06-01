@@ -21,33 +21,42 @@ public class LoginTest {
         lin = new Login();
     }
 
-    @Test(priority = 1, description = "Valid Login Test")
-    public void TC001_LoginWithValidCreds() throws Exception {
-        common.log().info("====TC001 Valid Login started====");
-        lin.validCreds();
-        common.log().info("Positive test case for valid login executed successfully...");
+    @Test
+    public void TC_Login_01() throws Exception {
+        common.log().info("====TC_Login_01 Login as Registered user started====");
+        lin.loginWithValidCreds();
+        common.log().info("Login as Registered user executed successfully...");
     }
 
-    @Test(priority = 2, description = "Invalid Email Login Test")
-    public void TC002_LoginWithInvalidEmail() throws Exception {
-        common.log().info("====TC002 Invalid Email Login started====");
-        lin.inValidEmail();
-        common.log().info("Negative test case for invalid email login executed successfully...");
+    @Test
+    public void TC_Login_02() throws Exception {
+        common.log().info("====TC_Login_02 Invalid Email Login started====");
+        lin.invalidEmailLogin();
+        common.log().info("Test case for Invalid Email login executed successfully...");
     }
 
-    @Test(priority = 3, description = "Invalid Password Login Test")
-    public void TC003_LoginWithInvalidPassword() throws Exception {
-        common.log().info("====TC003 Invalid Password Login started====");
-        lin.inValidPass();
-        common.log().info("Negative test case for invalid password login executed successfully...");
+    @Test
+    public void TC_Login_03() throws Exception {
+        common.log().info("====TC_Login_03 Login with Invalid Password started====");
+        lin.invalidPassLogin();
+        common.log().info("Test case for  Login with Invalid Password executed successfully...");
     }
 
-    @Test(priority = 4, description = "Empty Fields Login Test")
-    public void TC004_LoginWithEmptyFields() throws Exception {
-        common.log().info("====TC004 Empty Fields Login started====");
-        lin.emptyFields();
-        common.log().info("Negative test case for empty fields login executed successfully...");
+    @Test
+    public void TC_Login_04() throws Exception {
+        common.log().info("====TC_Login_03 Login with Empty Fields started====");
+        lin.blankFieldsLogin();
+        common.log().info("Test case for Login with Empty Fields executed successfully...");
     }
+
+    @Test
+    public void TC_Login_05() throws Exception {
+        common.log().info("====TC_Login_05 Logout from Application started====");
+        lin.loginWithValidCreds();
+        lin.logoutFromApplication();
+        common.log().info("Test case for Logout from Application executed successfully...");
+    }
+
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception{
         ScreenShot.captureOnFailure(driver, result);

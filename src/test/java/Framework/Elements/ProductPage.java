@@ -23,7 +23,7 @@ public class ProductPage {
     @FindBy(xpath = "//h2[@class]")
     public WebElement SearchTitle;
 
-    @FindBy(xpath = "//*[@class='product-image-wrapper']")
+    @FindBy(xpath = "//a[contains(@href,'product_details')]")
     public List<WebElement> products;
 
     @FindBy(xpath = "(//*[@class='product-image-wrapper'])[1]//a[@href]")
@@ -38,9 +38,10 @@ public class ProductPage {
     @FindBy(xpath = "((//*[@class='product-image-wrapper'])[1]//a)[1]")
     public WebElement addFirstProdtoCart;
 
+
     // Product details Page elements
 
-    @FindBy(xpath = "(//div[@class='product-information']//following::h2)[1]")
+    @FindBy(xpath = "//div[@class='product-information']//h2")
     public WebElement ProductName;
 
     @FindBy(xpath = "(//div[@class='product-information']//following::span/span)[1]")

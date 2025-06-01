@@ -17,14 +17,14 @@ public class Login {
      * @throws Exception if an error occurs during the login process
      * @author Mr.MAHESH
      */
-    public void validCreds() throws Exception{
-        hp.loginpage.click();
+    public void loginWithValidCreds() throws Exception{
+        hp.loginSignupPage.click();
 
         lp.loginEmail.sendKeys(common.readProp("email"));
         lp.loginPass.sendKeys(common.readProp("password"));
 
         lp.loginBtn.click();
-        Assert.assertTrue(common.waitForVisibility(driver, lp.loggedInUser,10).isDisplayed(), "Login failed or user is not logged in...");
+        Assert.assertTrue(common.waitForVisibility(driver, lp.logoutBtn,10).isDisplayed(), "Login failed or user is not logged in...");
     }
 
     /**
@@ -32,8 +32,8 @@ public class Login {
      * @throws Exception if an error occurs during the login process
      * @author Mr.MAHESH
      */
-    public void inValidEmail() throws Exception{
-        hp.loginpage.click();
+    public void invalidEmailLogin() throws Exception{
+        hp.loginSignupPage.click();
 
         lp.loginEmail.sendKeys(common.readProp("invEmail"));
         lp.loginPass.sendKeys(common.readProp("password"));
@@ -54,8 +54,8 @@ public class Login {
      * @throws Exception if an error occurs during the login process
      * @author Mr.MAHESH
      */
-    public void inValidPass() throws Exception{
-        hp.loginpage.click();
+    public void invalidPassLogin() throws Exception{
+        hp.loginSignupPage.click();
 
         lp.loginEmail.sendKeys(common.readProp("email"));
         lp.loginPass.sendKeys(common.readProp("invPassword"));
@@ -75,8 +75,8 @@ public class Login {
      * @throws Exception if an error occurs during the login process
      * @author Mr.MAHESH
      */
-    public void emptyFields() throws Exception{
-        hp.loginpage.click();
+    public void blankFieldsLogin() throws Exception{
+        hp.loginSignupPage.click();
 
         lp.loginEmail.clear();
         lp.loginPass.clear();
@@ -96,6 +96,16 @@ public class Login {
             } else {
                 Assert.fail("Validation not correctly triggered for required field: " + element.getAttribute("data-qa"));
             }
+        }
+    }
+
+    // This method performs a logout operation.
+    public void logoutFromApplication() throws Exception {
+        if (lp.logoutBtn.isDisplayed()) {
+            lp.logoutBtn.click();
+            log().info("User logged out successfully...");
+        } else {
+            log().info("Logout button not displayed, user may not be logged in...");
         }
     }
 }

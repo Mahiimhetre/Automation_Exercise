@@ -5,10 +5,10 @@
         <classes>
             <class name="Framework.testCases.LoginTest">
                 <methods>
-                    <include name="TC001_LoginWithValidCreds"/>
-                    <include name="TC002_LoginWithInvalidEmail"/>
-                    <include name="TC003_LoginWithInvalidPassword"/>
-                    <include name="TC004_LoginWithEmptyFields"/>
+                    <include name="TC_Login_01"/>
+                    <include name=""/>
+                    <include name=""/>
+                    <include name=""/>
                 </methods>
             </class>
         </classes>

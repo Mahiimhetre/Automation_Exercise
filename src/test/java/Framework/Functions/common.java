@@ -137,6 +137,7 @@ public class common {
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
+    // Fluent Wait - Waits for an element to become visible with a specified timeout and polling interval.
     public static WebElement fluentWait(WebDriver driver, WebElement element, int timeoutSec, int pollingSec) throws Exception{
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(timeoutSec))
@@ -155,6 +156,7 @@ public class common {
         });
     }
 
+    // This method closes the WebDriver instance and quits the browser.
     public static void closeWeb(WebDriver driver) throws Exception {
         log().info("==============WebDriver signing off==============");
         driver.quit();
