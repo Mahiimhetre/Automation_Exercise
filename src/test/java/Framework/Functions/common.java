@@ -50,9 +50,9 @@ public class common {
      */
     public static Logger log() throws Exception{
         Properties prop = new Properties();
-        prop.load(new FileInputStream("src/log4j.properties"));
+        prop.load(new FileInputStream("src/test/resources/log4j.properties"));         // path of your log4j.properties file
         PropertyConfigurator.configure(prop);
-        PropertyConfigurator.configure("src/log4j.properties");
+        PropertyConfigurator.configure("src/test/resources/log4j.properties");  // path of your log4j.properties file
         BasicConfigurator.configure();
         return Logger.getLogger(common.class.getName());
     }

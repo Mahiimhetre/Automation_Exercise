@@ -14,7 +14,7 @@ import java.util.List;
 import static Framework.Functions.common.driver;
 import static Framework.Functions.common.log;
 
-public class signUp {
+public class SignUp {
     HomePage home = new HomePage(driver);
     SignupPage sign = new SignupPage(driver);
 
@@ -26,11 +26,14 @@ public class signUp {
      */
     public void gotoSign() throws Exception {
         home.signupPage.click();
-
+        log().info("Navigating to Signup Page...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
-        log().info("After checking The 'Name' and 'Email' field going to fill the Registration Form...");
+        log().info("After checking The 'Name' and 'Email' field Navigating to fill the Registration Form...");
+        // Wait for the page to load and title to match expected value
+        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup", "Page title does not match after navigating to Signup page.");
+        log().info("Page title verified: " + driver.getTitle());
     }
 
     /**
@@ -40,10 +43,6 @@ public class signUp {
      * @throws Exception if an error occurs during form filling or interaction
      */
     public void fillDetails()  throws Exception {
-
-        // Wait for the page to load and title to match expected value
-        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup", "Page title does not match after navigating to Signup page.");
-
         log().info("Filling the Registration Form with Details...");
         sign.title.click();
         sign.pass.sendKeys(common.readProp("password"));
@@ -77,6 +76,7 @@ public class signUp {
         sign.mobile.sendKeys(common.readProp("mobile"));
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", sign.createBtn);
+        log().info("Registration Form filled with Details...");
     }
 
     public void confirmation() throws Exception {
@@ -91,6 +91,7 @@ public class signUp {
         }
 
         sign.continueBtn.click();
+        log().info("User Registration completed successfully and redirected to Home Page...");
     }
 
     /**
@@ -101,17 +102,19 @@ public class signUp {
      */
     public void DuplicateUser() throws Exception {
         home.signupPage.click();
+        log().info("Navigating to Signup Page for Duplicate User Registration...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
 
+        log().info("Checking for Duplicate User Registration...");
         // Validate the error message
         if(common.waitForVisibility(driver, sign.existMsg, 10).isDisplayed()) {
-            log().info("Checking for Duplicate User Registration...");
             Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.existMsg.getText());
         } else {
             Assert.fail("Error message not displayed for duplicate email.");
         }
+        log().info("Duplicate User Registration validation completed successfully...");
     }
 
     /**
@@ -122,10 +125,12 @@ public class signUp {
      */
     public void checkSignupReqFields() throws Exception{
         home.signupPage.click();
+        log().info("Navigating to Signup Page to check Required Fields...");
         // Clear input fields to simulate empty values
         sign.SignupName.clear();
         sign.SignupEmail.clear();
         sign.SignupBtn.click();
+        log().info("Checking for Required Fields Validation...");
 
         List<WebElement> SignupFields = Arrays.asList(sign.SignupName, sign.SignupEmail);
 
@@ -134,7 +139,6 @@ public class signUp {
 
             if (common.isRequired(element)) {
                 if (isEmpty) {
-                    log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
                     /* Pass the test and stop execution immediately */
                     Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
                     return; // Stop further execution
@@ -143,12 +147,13 @@ public class signUp {
         }
         sign.createBtn.click();
 
+        log().info("Checking for Required Fields Validation in the Registration Form...");
+
         for (WebElement element : sign.formfields) {
             boolean isEmpty = element.getAttribute("value") == null || element.getAttribute("value").isEmpty();
 
             if (common.isRequired(element)) {
                 if (isEmpty) {
-                    log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
                     /* Pass the test and stop execution immediately */
                     Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
                     return; // Stop further execution
@@ -156,7 +161,8 @@ public class signUp {
             }
         }
         // Required field has value, so test continues
-        log().info("All Required field is correctly filled with Details...");
+        sign.continueBtn.click();
+        log().info("Required Fields Validation completed successfully...");
     }
 
     /**
@@ -167,6 +173,7 @@ public class signUp {
      */
     public void invalidEmailRegistration() throws Exception{
         home.signupPage.click();
+        log().info("Navigating to Signup Page for Invalid Email Registration...");
         sign.SignupName.sendKeys(common.readProp("first_name"));
         sign.SignupEmail.sendKeys(common.readProp("invEmail"));
         sign.SignupBtn.click();
@@ -180,7 +187,7 @@ public class signUp {
         else {
             Assert.fail("Error message not displayed for invalid email.");
         }
-
+        log().info("Invalid Email Registration validation completed successfully...");
     }
 }
 

@@ -76,7 +76,7 @@ public class SignupPage {
     @FindBy(xpath = "//*[@data-qa='create-account']")
     public WebElement createBtn;
 
-    @FindBy(xpath = "(//*[@data-qa='account-created']//following ::p)[1]")
+    @FindBy(xpath = "(//*[@data-qa='account-created']//following::p)[1]")
     public WebElement createConfirmation;
 
     @FindBy(xpath = "//*[@data-qa='continue-button']")

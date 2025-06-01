@@ -8,7 +8,7 @@ import org.testng.Assert;
 import static Framework.Functions.common.driver;
 import static Framework.Functions.common.log;
 
-public class login {
+public class Login {
     HomePage hp = new HomePage(driver);
     LoginPage lp = new LoginPage(driver);
 

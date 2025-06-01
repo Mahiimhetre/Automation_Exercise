@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Product Suite">
+    <test name="Product Test Classes">
+        <classes>
+            <class name="Framework.testCases.ProductTest">
+                <methods>
+                    <include name="TC001_SearchProduct"/>
+                    <include name="TC002_OpenProductDetails"/>
+                    <include name="TC003_VerifyProductDetails"/>
+                    <include name="TC004_AddProductToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

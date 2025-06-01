@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static Framework.Functions.common.log;
 
-public class screenShot {
+public class ScreenShot {
     /**
      * Captures a screenshot and saves it to the specified path with a unique name based on the test name and timestamp.
      * @author Mr.MAHESH

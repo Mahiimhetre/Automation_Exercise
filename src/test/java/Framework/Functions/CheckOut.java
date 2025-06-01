@@ -7,7 +7,7 @@ import Framework.Elements.HomePage;
 
 import static Framework.Functions.common.driver;
 
-public class checkOut {
+public class CheckOut {
     HomePage hp = new HomePage(driver);
     CheckoutPage cop = new CheckoutPage(driver);
 }

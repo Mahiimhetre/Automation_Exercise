@@ -1,8 +1,8 @@
 package Framework.testCases;
 
 import Framework.Functions.common;
-import Framework.Functions.login;
-import Framework.Functions.screenShot;
+import Framework.Functions.Login;
+import Framework.Functions.ScreenShot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,13 +12,13 @@ import org.testng.annotations.Test;
 //LoginPage	- Valid login - Invalid login - Blank email/password validation.
 public class LoginTest {
     WebDriver driver;
-    login lin;
+    Login lin;
 
 
     @BeforeMethod
     public void preCondition() throws Exception{
         driver = common.openWeb(common.readProp("url"));
-        lin = new login();
+        lin = new Login();
     }
 
     @Test(priority = 1, description = "Valid Login Test")
@@ -50,7 +50,7 @@ public class LoginTest {
     }
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception{
-        screenShot.captureOnFailure(driver, result);
+        ScreenShot.captureOnFailure(driver, result);
         common.closeWeb(driver);
     }
 }
