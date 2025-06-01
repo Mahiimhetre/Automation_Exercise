@@ -13,6 +13,8 @@ Documentation
 *.iws
 *.iml
 *.ipr
+src/main/java
+
 
 ### Eclipse ###
 .apt_generated
