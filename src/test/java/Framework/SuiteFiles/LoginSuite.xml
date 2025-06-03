@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SingUp Suite">
+<suite name="Login Suite">
     <test name="Login Test Classes" >
         <classes>
             <class name="Framework.testCases.LoginTest">
                 <methods>
                     <include name="TC_Login_01"/>
-                    <include name=""/>
-                    <include name=""/>
-                    <include name=""/>
+                    <include name="TC_Login_02"/>
+                    <include name="TC_Login_03"/>
+                    <include name="TC_Login_04"/>
+                    <include name="TC_Login_05"/>
                 </methods>
             </class>
         </classes>

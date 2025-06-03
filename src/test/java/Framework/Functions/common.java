@@ -14,6 +14,7 @@ import org.testng.Assert;
 import java.io.File;
 import java.io.FileInputStream;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -36,7 +37,24 @@ public class common {
         log().info("==============Accessing '" + url + "' webpage using ChromeDriver.==============");
         driver.get(url);
 
+        removeAds(); // Call the method to remove ads from the webpage
+
         return driver; // Return the WebDriver instance
+    }
+
+    public static void removeAds() throws Exception {
+        // This method is to remove ads from the webpage using JavaScript
+        try {
+            // Find all ad elements
+            List<WebElement> ads = driver.findElements(By.xpath("//iframe[@title='Advertisement']"));
+
+            // Remove each ad using JavaScript
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            for (WebElement ad : ads) {
+                js.executeScript("arguments[0].remove();", ad);
+            }
+        }
+        catch (Exception e) {log().info("");}
     }
 
     /**
@@ -86,6 +104,13 @@ public class common {
         return result; // Return the actual attribute check result
     }
 
+    public static boolean isEmpty(WebElement element) throws Exception {
+        // This method checks if the WebElement is empty
+        boolean isEmpty = (element.getAttribute("value") == null) || element.getAttribute("value").isEmpty();
+        String value = element.getAttribute("value");
+        return value == null || value.isEmpty(); // Return true if the value is null or empty
+    }
+
     // This method checks the validity of a form field using JavaScript and logs the validation message if it fails.
     public static boolean checkFieldValidity(WebDriver driver, WebElement element) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -95,8 +120,7 @@ public class common {
 
         if (!isValid) {
             String validationMsg = (String) js.executeScript(
-                    "return arguments[0].validationMessage;", element
-            );
+                    "return arguments[0].validationMessage;", element);
             log().info("Validation Message: " + validationMsg);
             return true; // Return true if validation fails
         }
@@ -107,6 +131,13 @@ public class common {
     public static void impWait(WebDriver driver, int sec) throws Exception {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
         log().info("Implicit wait set to '" + sec + "' seconds.");
+    }
+
+    //Explicit Wait - Element to be present
+    public static WebElement waitForPresence(WebDriver driver, By locator, int sec) throws Exception {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
+        log().info("Explicit wait for Element Presence: '" + locator.toString() + "' set to " + sec + " seconds.");
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     // Explicit Wait - Element to be visible

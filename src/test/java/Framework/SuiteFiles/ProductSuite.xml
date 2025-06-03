@@ -5,10 +5,13 @@
         <classes>
             <class name="Framework.testCases.ProductTest">
                 <methods>
-                    <include name="TC001_SearchProduct"/>
-                    <include name="TC002_OpenProductDetails"/>
-                    <include name="TC003_VerifyProductDetails"/>
-                    <include name="TC004_AddProductToCart"/>
+                    <include name="TC_Prod_01"/>
+                    <include name="TC_Prod_02"/>
+                    <include name="TC_Prod_03"/>
+                    <include name="TC_Prod_04"/>
+                    <include name="TC_Prod_05"/>
+                    <include name="TC_Prod_06"/>
+                    <include name="TC_Prod_07"/>
                 </methods>
             </class>
         </classes>

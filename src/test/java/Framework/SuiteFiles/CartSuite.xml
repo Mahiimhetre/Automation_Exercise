@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cart Suite">
+    <test name="Cart Test Classes">
+        <classes>
+            <class name="Framework.testCases.CartTest">
+                <methods>
+                    <include name="TC_Cart_01"/>
+                    <include name="TC_Cart_02"/>
+                    <include name="TC_Cart_03"/>
+                    <include name="TC_Cart_04"/>
+                    <include name="TC_Cart_05"/>
+                    <include name="TC_Cart_06"/>
+                    <include name="TC_Cart_07"/>
+                    <include name="TC_Cart_08"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

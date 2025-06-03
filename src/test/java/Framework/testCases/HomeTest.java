@@ -4,6 +4,7 @@ import Framework.Functions.Home;
 import Framework.Functions.ScreenShot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 
 import Framework.Functions.common;
@@ -23,6 +24,7 @@ public class HomeTest {
         driver = common.openWeb(common.readProp("url"));
         home = new Home();
     }
+
     @Test
     public void TC_Home_01() throws Exception{
         // Test case to verify the home page title
@@ -33,14 +35,33 @@ public class HomeTest {
         home.checkContactPage();
     }
 
+    @Test
+    public void TC_Home_02() throws Exception {
+        log().info("Executing TC_Home_002: Verify Subscribe Functionality");
+        home.checkSubscribe();
+        log().info("TC_Home_002 Verify Subscribe Functionality executed successfully...");
+    }
+
+    @Test
+    public void TC_Home_03() throws Exception {
+//        negative
+        log().info("Executing TC_Home_003: Verify Subscribe Functionality with Invalid Email");
+        home.checkSubscribeInvalidEmail();
+        log().info("TC_Home_003 Verify Subscribe Functionality with Invalid Email executed successfully...");
+    }
+
+    @Test
+    public void TC_Home_04() throws Exception {
+        log().info("Executing TC_Home_004: Verify Login with Valid Credentials");
+        home.checkEmptySubscribeEmail();
+        log().info("TC_Home_004 Verify Login with Valid Credentials executed successfully...");
+    }
+
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         // Code to handle the result of the test, e.g., logging, taking screenshots, etc.
         ScreenShot.captureOnFailure(driver, result);
-        // Code to clean up after the test, e.g., closing the WebDriver
-        log().info("Cleaning up after the test...");
-        if (driver != null) {
-            driver.quit();
-        }
+        common.closeWeb(driver);
     }
+
 }

@@ -135,29 +135,22 @@ public class SignUp {
         List<WebElement> SignupFields = Arrays.asList(sign.SignupName, sign.SignupEmail);
 
         for (WebElement element : SignupFields) {
-            boolean isEmpty = (element.getAttribute("value") == null) || element.getAttribute("value").isEmpty();
-
-            if (common.isRequired(element)) {
-                if (isEmpty) {
-                    /* Pass the test and stop execution immediately */
-                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    return; // Stop further execution
-                }
+            if (common.isRequired(element) && common.isEmpty(element)) {
+                /* Pass the test and stop execution immediately */
+                Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                return; // Stop further execution
             }
+
         }
         sign.createBtn.click();
 
         log().info("Checking for Required Fields Validation in the Registration Form...");
 
         for (WebElement element : sign.formfields) {
-            boolean isEmpty = element.getAttribute("value").isEmpty() || (element.getAttribute("value") == null);
-
-            if (common.isRequired(element)) {
-                if (isEmpty) {
-                    /* Pass the test and stop execution immediately */
-                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    return; // Stop further execution
-                }
+            if (common.isRequired(element) && common.isEmpty(element)) {
+                /* Pass the test and stop execution immediately */
+                Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                return; // Stop further execution
             }
         }
         // Required field has value, so test continues
@@ -210,6 +203,7 @@ public class SignUp {
     }
 
     public void caseSensitiveEmail() throws Exception {
+
         home.loginSignupPage.click();
         log().info("Navigating to Signup Page for Case Sensitive Email Registration...");
         sign.SignupName.sendKeys(common.readProp("full_name"));

@@ -5,8 +5,9 @@ import Framework.Elements.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import static Framework.Functions.common.driver;
-import static Framework.Functions.common.log;
+import java.util.List;
+
+import static Framework.Functions.common.*;
 
 public class Login {
     HomePage hp = new HomePage(driver);
@@ -19,12 +20,13 @@ public class Login {
      */
     public void loginWithValidCreds() throws Exception{
         hp.loginSignupPage.click();
-
+        log().info("Entering valid credentials for login...");
         lp.loginEmail.sendKeys(common.readProp("email"));
         lp.loginPass.sendKeys(common.readProp("password"));
-
         lp.loginBtn.click();
-        Assert.assertTrue(common.waitForVisibility(driver, lp.logoutBtn,10).isDisplayed(), "Login failed or user is not logged in...");
+        Assert.assertTrue(common.waitForVisibility(driver, lp.logoutBtn,10).isDisplayed(),
+                "Login failed or user is not logged in...");
+        log().info("User logged in successfully with valid credentials...");
     }
 
     /**
@@ -84,23 +86,26 @@ public class Login {
         lp.loginBtn.click();
 
         for (WebElement element : lp.loginReqFields) {
-            boolean isEmpty = element.getAttribute("value") == null || element.getAttribute("value").isEmpty();
+           reqEmptyField(element);
+        }
+    }
+    public void reqEmptyField(WebElement element) throws Exception {
 
-            if (common.isRequired(element)) {
-                if (isEmpty) {
-                    log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    /* Pass the test and stop execution immediately */
-                    Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
-                    return; // Stop further execution
-                }
-            } else {
-                Assert.fail("Validation not correctly triggered for required field: " + element.getAttribute("data-qa"));
+        if (common.isRequired(element)) {
+            if (common.isRequired(element) && common.isEmpty(element)) {
+                log().info("Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                /* Pass the test and stop execution immediately */
+                Assert.assertTrue(true, "Validation correctly triggered for required field: " + element.getAttribute("data-qa"));
+                return; // Stop further execution
             }
+        } else {
+            Assert.fail("Validation not correctly triggered for required field: " + element.getAttribute("data-qa"));
         }
     }
 
     // This method performs a logout operation.
     public void logoutFromApplication() throws Exception {
+        removeAds();
         if (lp.logoutBtn.isDisplayed()) {
             lp.logoutBtn.click();
             log().info("User logged out successfully...");

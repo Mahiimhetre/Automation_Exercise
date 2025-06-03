@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Home Suite">
+    <test name="Home Test Classes" >
+        <classes>
+            <class name="Framework.testCases.HomeTest">
+                <methods>
+                    <include name="TC_Home_01"/>
+                    <include name="TC_Home_02"/>
+                    <include name="TC_Home_03"/>
+                    <include name="TC_Home_04"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+

@@ -18,31 +18,15 @@ public class CartPage {
     @FindBy(xpath = "//a[contains(@class,'check_out')]")
     public WebElement checkoutBtn;
 
-     @FindBy(xpath = "//td[@class='cart_product']")
-    public List<WebElement> cartProdCount;
+     @FindBy(xpath = "//a[@class = 'cart_quantity_delete']")
+    public List<WebElement> cartProducts;
 
-     @FindBy(xpath = "//tr[contains(@id,'product-1')]/td[@class='cart_price']/p")
-    public WebElement firstProductPrice;
 
-    @FindBy(xpath = "//tr[contains(@id,'product-1')]/td[@class='cart_quantity']/button")
-    public WebElement firstProductQuantity;
+//-------------Checkout modal------------------------------------------
+    @FindBy(xpath = "//div[@id='checkoutModal']//p[1]")
+    public WebElement checkoutModalText;
 
-    @FindBy(xpath = "//tr[contains(@id,'product-1')]/td/p[contains(@class,'total_price')]")
-    public WebElement firstProductTotalPrice;
-
-    @FindBy(xpath = "//tr[contains(@id,'product-2')]/td[@class='cart_price']/p")
-    public WebElement secondProductPrice;
-
-    @FindBy(xpath = "//tr[contains(@id,'product-2')]/td[@class='cart_quantity']/button")
-    public WebElement secondProductQuantity;
-
-    @FindBy(xpath = "//tr[contains(@id,'product-2')]/td/p[contains(@class,'total_price')]")
-    public WebElement secondProductTotalPrice;
-
-    @FindBy(xpath = "(//*[@data-product-id])[1]")
-    public WebElement rmFirstProduct;
-
-    @FindBy(xpath = "(//*[@data-product-id])[2]")
-    public WebElement rmSecondProduct;
+    @FindBy(xpath = "//div[@id='checkoutModal']//p/a")
+    public WebElement checkoutModalLink;
 
 }

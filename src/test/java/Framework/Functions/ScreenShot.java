@@ -44,6 +44,7 @@ public class ScreenShot {
      */
     public static void captureOnFailure(WebDriver driver, ITestResult result) throws Exception {
         if (result.getStatus() == ITestResult.FAILURE) {
+            log().info("Test failed: " + result.getName() + ". Capturing screenshot...");
             Thread.sleep(1000); // Wait for a second to ensure the page is fully loaded before capturing the screenshot.
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);  // Capture screenshot on failure
             try {

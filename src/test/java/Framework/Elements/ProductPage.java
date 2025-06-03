@@ -53,9 +53,11 @@ public class ProductPage {
     @FindBy(xpath = "//button[contains(@class,'cart')]")
     public WebElement addToCartBtn;
 
-
-    @FindBy(xpath = "(//*[@id='cartModal']//p)[1]")
+    @FindBy(xpath = "(//div[@id='cartModal']//p)[1]")
     public WebElement addCardConfirmation;
+
+    @FindBy(xpath = "//button[contains(@class,'close-modal')]")
+    public WebElement closeCartConfirmationBtn;
 
 
 }
