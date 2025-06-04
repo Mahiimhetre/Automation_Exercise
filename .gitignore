@@ -13,7 +13,6 @@ Documentation
 *.iws
 *.iml
 *.ipr
-src/main/java
 
 
 ### Eclipse ###

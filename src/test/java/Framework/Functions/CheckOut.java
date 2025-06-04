@@ -34,7 +34,6 @@ public class CheckOut {
 
 
     public void placeOrder() throws Exception {
-        proceedToCheckout();
         Assert.assertFalse(cop.deliveryAddress.isEmpty(),
                 "Delivery address is empty, please provide a valid delivery address before placing an order.");
         log().info("Delivery address is provided, proceeding to place the order...");

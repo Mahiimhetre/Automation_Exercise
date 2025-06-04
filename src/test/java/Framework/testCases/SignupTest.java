@@ -24,11 +24,11 @@ public class SignupTest {
 
     @Test (priority = 0, description = "New User Registration Test")
     public void TC_Signup_01() throws Exception {
-        log().info("====TC_Signup_01 New User Registration started====");
+        log().info("Executing TC_Signup_01: New User Registration started...");
         si.gotoSign();
         si.fillDetails();
         si.confirmation();
-        log().info("Positive test case for New User Registration executed successfully...");
+        log().info("TC_Signup_01: New User Registration executed successfully...");
 
     }
 
@@ -39,10 +39,9 @@ public class SignupTest {
     @Story("Story1: Duplicate Registration")
     @Severity(SeverityLevel.BLOCKER)
     public void TC_Signup_02() throws Exception{
-        log().info("====TC_Signup_02 Duplicate User Registration started====");
+        log().info("Executing TC_Signup_02: Duplicate User Registration started...");
         si.DuplicateUser();
-        log().info("Negative test case for Duplicate user Registration executed successfully...");
-
+        log().info("TC_Signup_02: Duplicate User Registration executed successfully...");
     }
 
     @Test(priority = 2, description = "Registration with Empty Required Fields Test")
@@ -52,9 +51,9 @@ public class SignupTest {
     @Story("Story2: Empty Required Fields")
     @Severity(SeverityLevel.CRITICAL)
     public void TC_Signup_03() throws Exception{
-        log().info("====TC_Signup_03 Signup with Empty Required Fields started====");
+        log().info("Executing TC_Signup_03: Registration with Empty Required Fields started...");
         si.checkSignupReqFields();
-        log().info("Negative test case for required fields executed successfully...");
+        log().info("TC_Signup_03: Registration with Empty Required Fields executed successfully...");
 
     }
 
@@ -65,23 +64,23 @@ public class SignupTest {
     @Story("Story3: Invalid Email Registration")
     @Severity(SeverityLevel.NORMAL)
     public void TC_Signup_04() throws Exception{
-        log().info("====TC_Signup_04 Signup with Invalid Email Fields started====");
+        log().info("Executing TC_Signup_04: Signup with Invalid Email started...");
         si.invalidEmailRegistration();
-        log().info("Negative test case for Invalid Email Signup executed successfully...");
+        log().info("TC_Signup_04: Signup with Invalid Email executed successfully...");
     }
 
     @Test(priority = 4, description = "Signup with Special Character in Name Test")
     public void TC_Signup_05() throws Exception{
-        log().info("====TC_Signup_05 Signup with Special Character in Name started====");
+        log().info("Executing TC_Signup_05: Signup with Special Character in Name started...");
         si.specialCharInName();
-        log().info("Negative test case for Special Character in Name Signup executed successfully...");
+        log().info("TC_Signup_05: Signup with Special Character in Name executed successfully...");
     }
 
     @Test(priority = 5, description = "Signup with Invalid Password Test")
     public void TC_Signup_06() throws Exception {
-        log().info("====TC_Signup_06 Signup with Upper case in Email started====");
+        log().info("Executing TC_Signup_06: Signup with Invalid Password started...");
         si.caseSensitiveEmail();
-        log().info("Negative test case for Invalid Password Signup executed successfully...");
+        log().info("TC_Signup_06: Signup with Invalid Password executed successfully...");
     }
 
     @AfterMethod

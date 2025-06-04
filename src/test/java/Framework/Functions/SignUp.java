@@ -215,7 +215,7 @@ public class SignUp {
         try {
             boolean isErrorDisplayed = common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed();
             Assert.assertTrue(isErrorDisplayed, "Validation correctly triggered for case sensitive email: " + sign.errorMsg.getText());
-        } catch (org.openqa.selenium.NoSuchElementException e) {
+        } catch (Exception e) {
             Assert.fail("Error message element not found for case sensitive email...");
         }
 

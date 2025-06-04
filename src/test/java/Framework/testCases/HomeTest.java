@@ -28,16 +28,17 @@ public class HomeTest {
     @Test
     public void TC_Home_01() throws Exception{
         // Test case to verify the home page title
-        log().info("Executing TC_Home_001: Verify Home Page Title");
+        log().info("Executing TC_Home_01: Verify Home Page Title...");
         home.checkProductPage();
         home.checkCartPage();
         home.checkLoginSignupPage();
         home.checkContactPage();
+        log().info("TC_Home_001 Verify Home Page Title executed successfully...");
     }
 
     @Test
     public void TC_Home_02() throws Exception {
-        log().info("Executing TC_Home_002: Verify Subscribe Functionality");
+        log().info("Executing TC_Home_02: Verify Subscribe Functionality...");
         home.checkSubscribe();
         log().info("TC_Home_002 Verify Subscribe Functionality executed successfully...");
     }
@@ -45,14 +46,14 @@ public class HomeTest {
     @Test
     public void TC_Home_03() throws Exception {
 //        negative
-        log().info("Executing TC_Home_003: Verify Subscribe Functionality with Invalid Email");
+        log().info("Executing TC_Home_03: Verify Subscribe Functionality with Invalid Email...");
         home.checkSubscribeInvalidEmail();
         log().info("TC_Home_003 Verify Subscribe Functionality with Invalid Email executed successfully...");
     }
 
     @Test
     public void TC_Home_04() throws Exception {
-        log().info("Executing TC_Home_004: Verify Login with Valid Credentials");
+        log().info("Executing TC_Home_04: Verify Login with Valid Credentials...");
         home.checkEmptySubscribeEmail();
         log().info("TC_Home_004 Verify Login with Valid Credentials executed successfully...");
     }

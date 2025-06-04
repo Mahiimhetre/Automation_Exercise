@@ -33,14 +33,13 @@ public class common {
         WebDriverManager.chromedriver().setup(); // Automatically sets up the ChromeDriver executable
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless=new", "--window-size=1920,1080");
+        chromeOptions.addArguments("--headless=new"); // Run Chrome in headless mode
         driver = new ChromeDriver(chromeOptions);
-//        driver.manage().window().maximize();
-        log().info("==============Accessing '" + url + "' webpage using ChromeDriver.==============");
+        driver.manage().window().maximize(); // Maximize the browser window
+        log().info("Launching browser and navigating to: " + url);
         driver.get(url);
-
-        removeAds(); // Call the method to remove ads from the webpage
-
+        removeAds();
+        driver.get(url);
         return driver; // Return the WebDriver instance
     }
 
@@ -49,11 +48,14 @@ public class common {
         try {
             // Find all ad elements
             List<WebElement> ads = driver.findElements(By.xpath("//iframe[@title='Advertisement']"));
+            if( !ads.isEmpty() && ads.size() > 0) {
+                log().info("Advertisement iframes removed from the current page...");
 
-            // Remove each ad using JavaScript
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            for (WebElement ad : ads) {
-                js.executeScript("arguments[0].remove();", ad);
+                // Remove each ad using JavaScript
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                for (WebElement ad : ads) {
+                    js.executeScript("arguments[0].remove();", ad);
+                }
             }
         }
         catch (Exception e) {log().info("");}
@@ -101,8 +103,7 @@ public class common {
      */
     public static boolean isRequired(WebElement element) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        boolean result = (Boolean) js.executeScript(
-                "return arguments[0].hasAttribute('required');", element);
+        boolean result = (Boolean) js.executeScript("return arguments[0].hasAttribute('required');", element);
         return result; // Return the actual attribute check result
     }
 
@@ -132,66 +133,71 @@ public class common {
     // Implicit Wait (still applies globally)
     public static void impWait(WebDriver driver, int sec) throws Exception {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
-        log().info("Implicit wait set to '" + sec + "' seconds.");
+        log().info("Setting implicit wait to " + sec + " seconds.");
     }
 
     //Explicit Wait - Element to be present
     public static WebElement waitForPresence(WebDriver driver, By locator, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-        log().info("Explicit wait for Element Presence: '" + locator.toString() + "' set to " + sec + " seconds.");
+        log().info("Waiting up to " + sec + " seconds for the element to be present: " + locator.toString());
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     // Explicit Wait - Element to be visible
     public static WebElement waitForVisibility(WebDriver driver, WebElement element, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-        log().info("Explicit wait for Element Visibility: '" + element.getText() + "' set to " + sec + " seconds.");
+        log().info("Waiting up to " + sec + " seconds for the element to be visible: " + element.toString());
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     // Explicit Wait - Element to be clickable
     public static WebElement waitForClickability(WebDriver driver, WebElement element, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-        log().info("Explicit wait for Element Clickability: '" + element.getText() + "' set to " + sec + " seconds.");
+        log().info("Waiting up to " + sec + " seconds for the element to be clickable: " + element.toString());
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     // Explicit Wait - Title contains specific text
     public static boolean waitForTitleContains(WebDriver driver, String partialTitle, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-        log().info("Explicit wait for WebDriver Title: '" + driver.getTitle() + "' set to " + sec + " seconds.");
-        return wait.until(ExpectedConditions.titleContains(partialTitle));
+        log().info("Waiting up to " + sec + " seconds for the title to contain: " + partialTitle);
+return wait.until(ExpectedConditions.titleContains(partialTitle));
     }
 
     // Explicit Wait - Alert is present
     public static Alert waitForAlert(WebDriver driver, int sec) throws Exception {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
-        log().info("Explicit wait for Alert Presence set to " + sec + " seconds.");
+        log().info("Waiting up to " + sec + " seconds for an alert to appear...");
         return wait.until(ExpectedConditions.alertIsPresent());
     }
 
     // Fluent Wait - Waits for an element to become visible with a specified timeout and polling interval.
-    public static WebElement fluentWait(WebDriver driver, WebElement element, int timeoutSec, int pollingSec) throws Exception{
+    public static WebElement fluentWait(WebDriver driver, WebElement element, int timeoutSec, int pollingSec) throws Exception {
+        log().info("Waiting for element to become visible using fluent wait...");
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(timeoutSec))
                 .pollingEvery(Duration.ofSeconds(pollingSec))
-                .ignoring(NoSuchElementException.class)
-                .withMessage("Waiting for element to become visible...");
+                .ignoring(NoSuchElementException.class);
 
         return wait.until(driver1 -> {
             if (element.isDisplayed()) {
-                System.out.println("Element is now visible: " + element);
+                try {
+                    log().info("Element became visible: " + element.toString());
+                } catch (Exception e) {
+                    System.out.print("");
+                }
                 return element;
             } else {
-                System.out.println("Still waiting for element...");
                 throw new NoSuchElementException("Element not visible yet.");
             }
         });
+
+
     }
 
     // This method closes the WebDriver instance and quits the browser.
     public static void closeWeb(WebDriver driver) throws Exception {
-        log().info("==============WebDriver signing off==============");
+        log().info("Quitting the browser...");
         driver.quit();
     }
 }

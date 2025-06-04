@@ -123,7 +123,7 @@ public class Cart {
                 WebElement product = common.waitForVisibility(driver, visibleProducts.get(i), 5);
                 js.executeScript("arguments[0].scrollIntoView(true);", product);
                 product.click();
-                Assert.assertTrue(common.waitForVisibility(driver, hp.closeModal, 2).isDisplayed(),
+                Assert.assertTrue(common.waitForVisibility(driver, hp.closeModal, 5).isDisplayed(),
                         "Close modal button is not displayed after adding product to cart.");
                 log().info("Product " + (added + 1) + " added to cart.");
                 hp.closeModal.click();

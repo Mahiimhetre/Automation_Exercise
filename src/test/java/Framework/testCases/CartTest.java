@@ -26,9 +26,9 @@ public class CartTest {
         home = new Home();
         login = new Login();
     }
-    @Test//(dependsOnMethods = {"Framework.testCases.ProductTest.TC_Prod_07"})
+    @Test
     public void TC_Cart_01() throws Exception {
-        // Test case to verify adding an item to the cart
+
         log().info("Executing TC_Cart_01: View cart...");
         cart.viewCart();
         log().info("TC_Cart_01 View cart executed successfully...");
@@ -36,7 +36,6 @@ public class CartTest {
 
     @Test
     public void TC_Cart_02() throws Exception {
-
         // Test case to check product count in the cart
         log().info("Executing TC_Cart_02: Check product count in cart...");
         cart.checkProdCount();
@@ -61,48 +60,40 @@ public class CartTest {
 
     @Test
     public void TC_Cart_05() throws Exception {
-        // Test case to verify the total price is updated according to the product quantity in the cart
+        log().info("Executing TC_Cart_05: Verify total price is according to the Unit Price and Quantity...");
         cart.addProducts(2); // Assuming 2 products to be added
-        log().info("Executing TC_Cart_05: Verify total price is according to 1 unit Price and Quantity...");
         cart.viewCart();
         cart.checkTotalPrice();
-        log().info("TC_Cart_05 Product Price Verification executed successfully...");
+        log().info("TC_Cart_05 Verify total price is according to the Unit Price and Quantity executed successfully...");
     }
 
     @Test
     public void TC_Cart_06() throws Exception{
-        log().info("Executing TC_Cart_06: Checking out without Login...");
+        log().info("Executing TC_Cart_06: Checkout without Login...");
         cart.viewCart();
         cart.checkEmptyCartModal();
-        log().info("TC_Cart_06 Checking out without Login executed successfully...");
+        log().info("TC_Cart_06 Checkout without Login executed successfully...");
     }
 
     @Test
     public void TC_Cart_07() throws Exception{
-        log().info("Executing TC_Cart_07: Add Multiple Product To Cart...");
+        log().info("Executing TC_Cart_07: Add multiple products to the cart...");
         login.loginWithValidCreds();
         removeAds();
         cart.addProducts(3); // Assuming 3 products to be added
-        log().info("Test case to add multiple products to the cart Executed successfully...");
+        log().info("TC_Cart_07 Add multiple products to the cart executed successfully...");
     }
 
     @Test
     public void TC_Cart_08() throws Exception{
-        log().info("Executing TC_Cart_08: Cart persistence after logout...");
+        log().info("Executing TC_Cart_08: Verify cart persistence after logout...");
         cart.cartPercistence();
-        log().info("Verifying cart persistence after logout Successful...");
+        log().info("TC_Cart_08 Verify cart persistence after logout executed successfully...");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
         common.closeWeb(driver);
-    }
-
-    @AfterClass
-    public void tearDown() throws Exception {
-        // Code to clean up after all tests
-        log().info("Tearing down Cart tests");
-            common.closeWeb(driver);
     }
 }

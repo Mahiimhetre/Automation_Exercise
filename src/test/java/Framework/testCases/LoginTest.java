@@ -23,38 +23,38 @@ public class LoginTest {
 
     @Test
     public void TC_Login_01() throws Exception {
-        common.log().info("====TC_Login_01 Login as Registered user started====");
+        common.log().info("Executing TC_Login_01: Valid Login started...");
         lin.loginWithValidCreds();
-        common.log().info("Login as Registered user executed successfully...");
+        common.log().info("TC_Login_01 Valid Login executed successfully...");
     }
 
     @Test
     public void TC_Login_02() throws Exception {
-        common.log().info("====TC_Login_02 Invalid Email Login started====");
+        common.log().info("Executing TC_Login_02: Invalid Email login started...");
         lin.invalidEmailLogin();
-        common.log().info("Test case for Invalid Email login executed successfully...");
+        common.log().info("TC_Login_02 Invalid Email login executed successfully...");
     }
 
     @Test
     public void TC_Login_03() throws Exception {
-        common.log().info("====TC_Login_03 Login with Invalid Password started====");
+        common.log().info("Executing TC_Login_03: Invalid Password login started...");
         lin.invalidPassLogin();
-        common.log().info("Test case for  Login with Invalid Password executed successfully...");
+        common.log().info("TC_Login_03 Invalid Password login executed successfully...");
     }
 
     @Test
     public void TC_Login_04() throws Exception {
-        common.log().info("====TC_Login_03 Login with Empty Fields started====");
+        common.log().info("Executing TC_Login_04: Blank Fields login started...");
         lin.blankFieldsLogin();
-        common.log().info("Test case for Login with Empty Fields executed successfully...");
+        common.log().info("TC_Login_04 Blank Fields login executed successfully...");
     }
 
     @Test
     public void TC_Login_05() throws Exception {
-        common.log().info("====TC_Login_05 Logout from Application started====");
+        common.log().info("Executing TC_Login_05: Logout from Application started...");
         lin.loginWithValidCreds();
         lin.logoutFromApplication();
-        common.log().info("Test case for Logout from Application executed successfully...");
+        common.log().info("TC_Login_05 Logout from Application executed successfully...");
     }
 
     @AfterMethod
