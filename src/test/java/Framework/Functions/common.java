@@ -5,6 +5,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -29,11 +30,12 @@ public class common {
      * @throws Exception
      */
     public static WebDriver openWeb(String url) throws Exception {
-        //--------------------------------For ChromeDriver Only---------------------------------------------------------
         WebDriverManager.chromedriver().setup(); // Automatically sets up the ChromeDriver executable
-        driver = new ChromeDriver();
-        log().info("==============ChromeDriver Initialized Successfully.==============");
-        driver.manage().window().maximize();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless=new", "--window-size=1920,1080");
+        driver = new ChromeDriver(chromeOptions);
+//        driver.manage().window().maximize();
         log().info("==============Accessing '" + url + "' webpage using ChromeDriver.==============");
         driver.get(url);
 

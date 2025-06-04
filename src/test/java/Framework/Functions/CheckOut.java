@@ -64,7 +64,7 @@ public class CheckOut {
         js.executeScript("arguments[0].scrollIntoView(true);", cop.payButton);
         cop.payButton.click();
         Assert.assertTrue(common.waitForVisibility(driver,cop.orderConfirmationTitle,5).getText().contains("PLACED!"),
-                "Order confirmation title does not contain 'placed!', order placement failed.");
+                "Order confirmation title does not contain 'PlACED!', order placement failed.");
         log().info("Order placed successfully...");
     }
 
@@ -76,13 +76,14 @@ public class CheckOut {
         cop.cardExpiryYear.sendKeys(common.readProp("ccExpiryYear"));
 
         cop.payButton.click();
-        if (common.checkFieldValidity(driver, cop.cardName)) {
-            Assert.assertTrue(true, "Validation correctly triggered for required field: " + cop.cardName.getAttribute("data-qa"));
+
+        try {
+            Assert.assertTrue(common.checkFieldValidity(driver, cop.cardName),
+                    "Validation correctly triggered for required field: " + cop.cardName.getAttribute("data-qa"));
             return; // Stop further execution if validation fails
+        } catch (Exception e) {
+            Assert.fail("Validation did not trigger for invalid payment details: " + e.getMessage());
         }
-        else {
-            Assert.fail("Error message not displayed for invalid email.");
-        }log().info("Order placement failed as expected with invalid payment details...");
     }
 
     public void emptyPaymentDetails() throws Exception {

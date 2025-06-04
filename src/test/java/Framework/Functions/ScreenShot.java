@@ -48,7 +48,8 @@ public class ScreenShot {
             Thread.sleep(1000); // Wait for a second to ensure the page is fully loaded before capturing the screenshot.
             File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);  // Capture screenshot on failure
             try {
-                FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png")); // Save the screenshot with the test name
+                // Save the screenshot to the specified directory with the test name
+//                FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png"));
                 log().info("Screenshot saved for failed test: " + result.getName());
                 Allure.addAttachment("Screenshot on Failure", FileUtils.openInputStream(screenshot)); // Attach the screenshot to Allure report
             } catch (IOException e) {

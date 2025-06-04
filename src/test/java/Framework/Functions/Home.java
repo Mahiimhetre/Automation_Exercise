@@ -13,6 +13,7 @@ import static Framework.Functions.common.*;
 
 public class Home {
     HomePage hp = new HomePage(driver);
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     public void checkProductPage() throws Exception {
         // Navigate to the product page
@@ -70,7 +71,7 @@ public class Home {
     public void checkSubscribe() throws Exception {
         log().info("Subscribing to the newsletter with email: " + common.readProp("email"));
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+
         js.executeScript("arguments[0].scrollIntoView(true);", hp.subscriberEmail);
 
         hp.subscriberEmail.clear();

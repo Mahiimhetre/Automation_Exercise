@@ -5,8 +5,7 @@ import Framework.Elements.ProductPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
-import static Framework.Functions.common.driver;
-import static Framework.Functions.common.log;
+import static Framework.Functions.common.*;
 
 public class Product {
      HomePage homePage = new HomePage(driver);
@@ -23,7 +22,7 @@ public class Product {
 
         Assert.assertTrue(productPage.SearchTitle.getText().contains(common.readProp("afterSearchTitle")), "Search results title validation failed.");
 
-        Assert.assertTrue( !productPage.products.isEmpty(), "No products found for: '" + productName + "'");
+        Assert.assertFalse(productPage.products.isEmpty(), "No products found for: '" + productName + "'");
     }
 
     public void searchProductByEmptyName() throws Exception {
@@ -54,7 +53,7 @@ public class Product {
     }
 
     public void openProductDetails(int productIndex) throws Exception {
-
+        removeAds();
         Assert.assertTrue(productIndex >= 0 && productIndex < productPage.products.size(), "Invalid product index.");
 
         // Scroll to the product and click on it
