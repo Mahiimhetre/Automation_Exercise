@@ -3,7 +3,6 @@ package Framework.testCases;
 import Framework.Functions.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,6 +12,7 @@ import static Framework.Functions.common.log;
 public class CheckoutTest {
     WebDriver driver;
     CheckOut cout;
+    Cart cart;
 
     @BeforeMethod
     public void preCondition() throws Exception {
@@ -69,3 +69,4 @@ public class CheckoutTest {
     }
 }
 
+// have to add product to execute the test cases correctly ...

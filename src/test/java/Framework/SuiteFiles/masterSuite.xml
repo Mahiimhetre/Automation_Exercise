@@ -7,6 +7,6 @@
        <suite-file path="LoginSuite.xml"/>
        <suite-file path="ProductSuite.xml"/>
        <suite-file path="CartSuite.xml"/>
-<!--       <suite-file path="CheckoutSuite.xml"/>-->
+       <suite-file path="CheckoutSuite.xml"/>
    </suite-files>
 </suite>

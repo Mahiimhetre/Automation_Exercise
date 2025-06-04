@@ -62,7 +62,7 @@ public class Product {
         js.executeScript("arguments[0].scrollIntoView(true);", productPage.products.get(productIndex));
         productPage.products.get(productIndex).click();
 
-        log().info("Opening product details for index: " + productIndex);
+        log().info("Opening product details for index: " + (productIndex + 1) );
         Assert.assertTrue(driver.getTitle().contains("Product Details"), "Product details URL validation failed.");
     }
 
@@ -82,7 +82,7 @@ public class Product {
         productPage.productQuantity.sendKeys(String.valueOf(quantity));
         productPage.addToCartBtn.click();
 
-        Assert.assertTrue(common.waitForVisibility(driver, homePage.closeModal, 20).isDisplayed(),
+        Assert.assertTrue(common.waitForVisibility(driver, homePage.closeModal, 5).isDisplayed(),
                 "Close modal button is not displayed after adding product to cart.");
         log().info("Product added to cart.");
         homePage.closeModal.click();

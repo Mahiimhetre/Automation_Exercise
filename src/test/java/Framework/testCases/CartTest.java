@@ -62,7 +62,7 @@ public class CartTest {
     @Test
     public void TC_Cart_05() throws Exception {
         // Test case to verify the total price is updated according to the product quantity in the cart
-        cart.addProductToCart(2); // Assuming 2 products to be added
+        cart.addProducts(2); // Assuming 2 products to be added
         log().info("Executing TC_Cart_05: Verify total price is according to 1 unit Price and Quantity...");
         cart.viewCart();
         cart.checkTotalPrice();
@@ -82,7 +82,7 @@ public class CartTest {
         log().info("Executing TC_Cart_07: Add Multiple Product To Cart...");
         login.loginWithValidCreds();
         removeAds();
-        cart.addProductToCart(3); // Assuming 3 products to be added
+        cart.addProducts(3); // Assuming 3 products to be added
         log().info("Test case to add multiple products to the cart Executed successfully...");
     }
 

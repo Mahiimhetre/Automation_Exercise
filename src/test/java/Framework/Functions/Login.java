@@ -24,7 +24,7 @@ public class Login {
         lp.loginEmail.sendKeys(common.readProp("email"));
         lp.loginPass.sendKeys(common.readProp("password"));
         lp.loginBtn.click();
-        Assert.assertTrue(common.waitForVisibility(driver, lp.logoutBtn,10).isDisplayed(),
+        Assert.assertTrue(common.waitForVisibility(driver, lp.logoutBtn,5).isDisplayed(),
                 "Login failed or user is not logged in...");
         log().info("User logged in successfully with valid credentials...");
     }
@@ -64,7 +64,7 @@ public class Login {
 
         lp.loginBtn.click();
         log().info("Checking for Credentials Validity...");
-        if(common.waitForVisibility(driver, lp.errorMsg, 10).isDisplayed()) {
+        if(common.waitForVisibility(driver, lp.errorMsg, 2).isDisplayed()) {
             Assert.assertTrue(true, "Validation correctly triggered for invalid email/password: " + lp.errorMsg.getText());
         }
         else {

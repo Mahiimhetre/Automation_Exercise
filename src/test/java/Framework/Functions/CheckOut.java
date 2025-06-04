@@ -14,12 +14,14 @@ public class CheckOut {
     HomePage hp = new HomePage(driver);
     CartPage cp = new CartPage(driver);
     CheckoutPage cop = new CheckoutPage(driver);
+    Cart cart = new Cart();
 
     Login login = new Login();
     JavascriptExecutor js = (JavascriptExecutor) driver;
 
     public void proceedToCheckout() throws Exception {
         login.loginWithValidCreds();
+        cart.addProducts(1);
         hp.cartPage.click();
         Assert.assertFalse(cp.cartProducts.isEmpty(),
                 "Cart is empty, please add products to the cart before proceeding to checkout.");
@@ -29,6 +31,7 @@ public class CheckOut {
                 "URL does not contain 'checkout', checkout page not reached...");
         log().info("Checkout page reached successfully, URL contains 'checkout'...");
     }
+
 
     public void placeOrder() throws Exception {
         proceedToCheckout();
@@ -49,7 +52,7 @@ public class CheckOut {
 
         Assert.assertTrue(Objects.requireNonNull(driver.getCurrentUrl()).contains("payment"),
                 "URL does not contain 'payment', order placement page not reached...");
-        log().info("Filling payment details...");
+        log().info("User Navigated to Payment page successfully...");
     }
 
     public void paymentDetails() throws Exception{
@@ -60,7 +63,7 @@ public class CheckOut {
         cop.cardExpiryYear.sendKeys(common.readProp("ccExpiryYear"));
         js.executeScript("arguments[0].scrollIntoView(true);", cop.payButton);
         cop.payButton.click();
-        Assert.assertTrue(common.waitForVisibility(driver,cop.orderConfirmationTitle,5).getText().contains("placed!"),
+        Assert.assertTrue(common.waitForVisibility(driver,cop.orderConfirmationTitle,5).getText().contains("PLACED!"),
                 "Order confirmation title does not contain 'placed!', order placement failed.");
         log().info("Order placed successfully...");
     }
@@ -73,9 +76,13 @@ public class CheckOut {
         cop.cardExpiryYear.sendKeys(common.readProp("ccExpiryYear"));
 
         cop.payButton.click();
-        Assert.assertFalse(common.waitForVisibility(driver,cop.orderConfirmationTitle,5).getText().contains("placed!"),
-                "Order confirmation title contains 'placed!', order placement should have failed.");
-        log().info("Order placement failed as expected with invalid payment details...");
+        if (common.checkFieldValidity(driver, cop.cardName)) {
+            Assert.assertTrue(true, "Validation correctly triggered for required field: " + cop.cardName.getAttribute("data-qa"));
+            return; // Stop further execution if validation fails
+        }
+        else {
+            Assert.fail("Error message not displayed for invalid email.");
+        }log().info("Order placement failed as expected with invalid payment details...");
     }
 
     public void emptyPaymentDetails() throws Exception {
@@ -89,8 +96,13 @@ public class CheckOut {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", cop.payButton);
         cop.payButton.click();
-        Assert.assertFalse(common.waitForVisibility(driver,cop.orderConfirmationTitle,5).getText().contains("placed!"),
-                "Order confirmation title contains 'placed!', order placement should have failed due to empty payment details.");
+        if (common.checkFieldValidity(driver, cop.cardName)) {
+            Assert.assertTrue(true, "Validation correctly triggered for required field: " + cop.cardName.getAttribute("data-qa"));
+            return; // Stop further execution if validation fails
+        }
+        else {
+            Assert.fail("Error message not displayed for invalid email.");
+        }
         log().info("Order placement failed as expected with empty payment details...");
     }
 

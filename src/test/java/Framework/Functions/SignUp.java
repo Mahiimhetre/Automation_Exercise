@@ -80,7 +80,7 @@ public class SignUp {
     }
 
     public void confirmation() throws Exception {
-        String message = common.waitForVisibility(driver, sign.createConfirmation, 15).getText();
+        String message = common.waitForVisibility(driver, sign.createConfirmation, 4).getText();
 
         log().info("Checking for Confirmation Message...");
 
@@ -109,7 +109,7 @@ public class SignUp {
 
         log().info("Checking for Duplicate User Registration...");
         // Validate the error message
-        if(common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed()) {
+        if(common.waitForVisibility(driver, sign.errorMsg, 2).isDisplayed()) {
             Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
         } else {
             Assert.fail("Error message not displayed for duplicate email.");
@@ -193,7 +193,7 @@ public class SignUp {
 
         log().info("Checking for error massage for Special Character in Image...");
         // Validate the error message
-        if(common.waitForVisibility(driver, sign.errorMsg, 10).isDisplayed()) {
+        if(common.waitForVisibility(driver, sign.errorMsg, 2).isDisplayed()) {
             Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
         } else {
             Assert.fail("Error message not displayed for Special Character in Name.");

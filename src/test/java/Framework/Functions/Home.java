@@ -9,8 +9,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Framework.Functions.common.driver;
-import static Framework.Functions.common.log;
+import static Framework.Functions.common.*;
 
 public class Home {
     HomePage hp = new HomePage(driver);
@@ -18,7 +17,7 @@ public class Home {
     public void checkProductPage() throws Exception {
         // Navigate to the product page
         log().info("Navigating to the product page...");
-        common.waitForVisibility(driver,hp.prodPage,20).click();
+        common.waitForVisibility(driver,hp.prodPage,5).click();
         Assert.assertNotNull(driver.getTitle(), "Driver is not initialized or the page title is null.");
         Assert.assertTrue(driver.getTitle().contains("Products"),
                 "Product page is not displayed correctly or URL is incorrect.");
@@ -31,7 +30,7 @@ public class Home {
     public void checkCartPage() throws Exception {
         // Navigate to the cart page
         log().info("Navigating to the cart page...");
-        common.waitForVisibility(driver,hp.cartPage,20).click();
+        common.waitForVisibility(driver,hp.cartPage,5).click();
         Assert.assertNotNull(driver.getTitle(), "Driver is not initialized or the page title is null.");
         Assert.assertTrue(driver.getTitle().contains("Checkout"),
                 "Cart page is not displayed correctly or URL is incorrect.");
@@ -44,7 +43,7 @@ public class Home {
     public void checkLoginSignupPage() throws Exception {
         // Navigate to the login/signup page
         log().info("Navigating to the login/signup page...");
-        common.waitForVisibility(driver,hp.loginSignupPage,20).click();
+        common.waitForVisibility(driver,hp.loginSignupPage,5).click();
         Assert.assertNotNull(driver.getTitle(), "Driver is not initialized or the page title is null.");
         Assert.assertTrue(driver.getTitle().contains("Signup / Login"),
                 "Login/Signup page is not displayed correctly or URL is incorrect.");
@@ -57,7 +56,7 @@ public class Home {
     public void checkContactPage() throws Exception {
         // Navigate to the contact page
         log().info("Navigating to the contact page...");
-        common.waitForVisibility(driver,hp.ContactPage,20).click();
+        common.waitForVisibility(driver,hp.ContactPage,5).click();
         Assert.assertNotNull(driver.getTitle(), "Driver is not initialized or the page title is null.");
         Assert.assertTrue(driver.getTitle().contains("Contact Us"),
                 "Contact page is not displayed correctly or URL is incorrect.");
@@ -79,7 +78,7 @@ public class Home {
         hp.subscribeBtn.click();
 
         By successMsgLocator = By.xpath("//div[contains(text(), 'You have been successfully subscribed')]");
-        WebElement successMsg = common.waitForPresence(driver, successMsgLocator, 10);
+        WebElement successMsg = common.waitForPresence(driver, successMsgLocator, 5);
 
         Assert.assertTrue(successMsg.isDisplayed(), "Subscription success message is not displayed.");
         log().info("Subscription successful with email: " + common.readProp("email..."));
@@ -102,6 +101,7 @@ public class Home {
     }
 
     public void checkEmptySubscribeEmail() throws Exception {
+        removeAds();
         // Check required fields for subscription
         hp.subscriberEmail.clear();
         log().info("Checking required fields for subscription with empty email...");

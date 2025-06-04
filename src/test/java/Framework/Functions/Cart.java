@@ -74,7 +74,7 @@ public class Cart {
     public void checkEmptyCartModal() throws Exception {
         log().info("clicking on checkout button to open modal...");
         try {
-            Assert.assertFalse(common.waitForVisibility(driver, cp.checkoutBtn, 20).isDisplayed(),
+            Assert.assertFalse(common.waitForVisibility(driver, cp.checkoutBtn, 5).isDisplayed(),
                     "Checkout button is displayed when it should not be.");
         } catch (Exception e) {
             log().info("Checkout button is not displayed, as expected...");
@@ -105,7 +105,7 @@ public class Cart {
     }
 
 
-    public void addProductToCart(int count) throws Exception {
+    public void addProducts(int count) throws Exception {
 
         List<WebElement> visibleProducts = new ArrayList<>();
         for (int i = 1; i < hp.homeProducts.size(); i++) {
@@ -120,17 +120,16 @@ public class Cart {
         int added = 0;
         for (int i = 0; i < visibleProducts.size() && added < count; i++) {
             if ((i + 1) % 2 != 0) { // 1-based even index
-                WebElement product = common.waitForVisibility(driver, visibleProducts.get(i), 20);
+                WebElement product = common.waitForVisibility(driver, visibleProducts.get(i), 5);
                 js.executeScript("arguments[0].scrollIntoView(true);", product);
                 product.click();
-                Assert.assertTrue(common.waitForVisibility(driver, hp.closeModal, 20).isDisplayed(),
+                Assert.assertTrue(common.waitForVisibility(driver, hp.closeModal, 2).isDisplayed(),
                         "Close modal button is not displayed after adding product to cart.");
                 log().info("Product " + (added + 1) + " added to cart.");
                 hp.closeModal.click();
                 added++;
             }
         }
-        log().info(added + " products added to cart successfully...");
     }
 
     public void cartPercistence() throws Exception {
