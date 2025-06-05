@@ -20,6 +20,7 @@ public class ProductTest {
         driver = common.openWeb(common.readProp("url")); // Assuming common.getDriver() initializes and returns the WebDriver instance
         prod = new Product();
     }
+
     @Test(priority = 0)
     public void TC_Prod_01() throws Exception {
         common.log().info("Executing TC_Prod_01: Search product with Empty Name...");
@@ -36,21 +37,21 @@ public class ProductTest {
     }
 
     // this priority is set to 1 so that it runs After TC_Prod_01/TC_Prod_02  because the other test depends on the product search.
-    @Test(priority = 1)
+    @Test
     public void TC_Prod_03() throws Exception {
         common.log().info("Executing TC_Prod_03: Search Product by valid name...");
         prod.searchProduct(common.readProp("productName"));
         common.log().info("TC_Prod_03 Search Product by valid name executed successfully...");
     }
 
-    @Test(priority = 2)
+    @Test
     public void TC_Prod_04() throws Exception {
         common.log().info("Executing TC_Prod_04: View product details...");
         prod.openProductDetails(0); // Assuming we want to open the first product in the search results
         common.log().info("TC_Prod_04 View product details executed successfully...");
     }
 
-    @Test(priority = 3)
+    @Test
     public void TC_Prod_05() throws Exception {
         common.log().info("Executing TC_Prod_05: Verify product details...");
         prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available
@@ -61,7 +62,7 @@ public class ProductTest {
     }
 
     //add Product to cart with invalid quantity
-    @Test(priority = 4)
+    @Test
     public void TC_Prod_06() throws Exception {
         common.log().info("Executing TC_Prod_06: Add Product to Cart with Invalid Quantity...");
         prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available
@@ -72,7 +73,7 @@ public class ProductTest {
     }
 
     //add Product to cart with valid quantity
-    @Test(priority = 5)
+    @Test
     public void TC_Prod_07() throws Exception {
         common.log().info("Executing TC_Prod_07: Add Product to Cart with Valid Quantity...");
         prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available

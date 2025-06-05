@@ -22,7 +22,7 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>6.14.3</version>
-      <!--            <scope>test</scope>-->
+      <!--  <scope>test</scope>   Uncomment if you want to limit TestNG to test scope only -->
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/log4j/log4j -->
@@ -66,4 +66,20 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <!--Build section to  Configure Surefire to run only tests listed in masterSuite.xml using TestNG -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version> <!-- or whatever version you're using -->
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/java/Framework/SuiteFiles/masterSuite.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
