@@ -139,6 +139,6 @@ AutomationExercise/
 
 ## Author
 
-[Mahiimhetre](https://github.com/Mahiimhetre)
+[Mr.Mahesh Mhetre](https://github.com/Mahiimhetre)
 
 ---
