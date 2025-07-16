@@ -1,19 +1,25 @@
 package Framework.Functions;
 
+import Framework.DriverManager;
 import Framework.Elements.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static Framework.Functions.common.*;
 
 public class Home {
-    HomePage hp = new HomePage(driver);
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+    private WebDriver driver;
+    private HomePage hp;
+
+    public Home(WebDriver driver){
+        this.driver = driver;
+        hp = new HomePage(driver);
+    }
 
     public void checkProductPage() throws Exception {
         // Navigate to the product page
@@ -71,7 +77,7 @@ public class Home {
     public void checkSubscribe() throws Exception {
         log().info("Subscribing to the newsletter with email: " + common.readProp("email"));
 
-
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", hp.subscriberEmail);
 
         hp.subscriberEmail.clear();
@@ -84,7 +90,6 @@ public class Home {
         Assert.assertTrue(successMsg.isDisplayed(), "Subscription success message is not displayed.");
         log().info("Subscription successful with email: " + common.readProp("email..."));
     }
-
 
     public void checkSubscribeInvalidEmail() throws Exception{
         log().info("Checking for Credentials Validity...");
@@ -111,7 +116,7 @@ public class Home {
 
         // Verify that the required field error is displayed
         log().info("Checking required fields for subscription...");
-        Assert.assertTrue(common.isRequired(hp.subscriberEmail) && common.isEmpty(hp.subscriberEmail),
+        Assert.assertTrue(common.isRequired(common.waitForVisibility(driver,hp.subscriberEmail,5)) && common.isEmpty(hp.subscriberEmail),
                 "Required field validation failed for subscriber email.");
         log().info("Required field Validation passed for subscriber email...");
     }

@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Product Suite">
+<suite name="Product Suite" parallel="methods" thread-count="4">
     <test name="Product Test Classes">
         <classes>
-            <class name="Framework.testCases.ProductTest">
-                <methods>
-                    <include name="TC_Prod_01"/>
-                    <include name="TC_Prod_02"/>
-                    <include name="TC_Prod_03"/>
-                    <include name="TC_Prod_04"/>
-                    <include name="TC_Prod_05"/>
-                    <include name="TC_Prod_06"/>
-                    <include name="TC_Prod_07"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.Product.TC_Prod_01"/>
+            <class name="Framework.testCases.Product.TC_Prod_02"/>
+            <class name="Framework.testCases.Product.TC_Prod_03"/>
+            <class name="Framework.testCases.Product.TC_Prod_04"/>
+            <class name="Framework.testCases.Product.TC_Prod_05"/>
+            <class name="Framework.testCases.Product.TC_Prod_07"/>
+            <class name="Framework.testCases.Product.TC_Prod_06"/>
         </classes>
     </test>
 </suite>

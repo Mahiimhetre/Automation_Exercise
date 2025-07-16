@@ -1,18 +1,26 @@
 package Framework.Functions;
 
+import Framework.DriverManager;
 import Framework.Elements.HomePage;
 import Framework.Elements.LoginPage;
+import Framework.Elements.SignupPage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
-import java.util.List;
+import org.testng.annotations.BeforeMethod;
 
 import static Framework.Functions.common.*;
 
 public class Login {
-    HomePage hp = new HomePage(driver);
-    LoginPage lp = new LoginPage(driver);
+    private WebDriver driver;
+    private HomePage hp;
+    private LoginPage lp;
 
+    public Login(WebDriver driver){
+        this.driver = driver;
+        hp = new HomePage(driver);
+        lp = new LoginPage(driver);
+    }
     /**
      * This method performs a login operation with valid credentials.
      * @throws Exception if an error occurs during the login process
@@ -106,7 +114,7 @@ public class Login {
     // This method performs a logout operation.
     public void logoutFromApplication() throws Exception {
         removeAds();
-        if (lp.logoutBtn.isDisplayed()) {
+        if (common.waitForVisibility(driver,lp.logoutBtn,2).isDisplayed()) {
             lp.logoutBtn.click();
             log().info("User logged out successfully...");
         } else {

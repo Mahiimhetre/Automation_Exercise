@@ -3,25 +3,39 @@ package Framework.Functions;
 //Chartpage = Check product count in cart - Remove products from cart - Verify cart is reduces/empty after removal
                 // - verify the total price is updated according to the product quantity in the cart
 
+import Framework.DriverManager;
+
 import Framework.Elements.CartPage;
 import Framework.Elements.HomePage;
+import Framework.Elements.SignupPage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static Framework.Functions.common.driver;
 import static Framework.Functions.common.log;
 
 public class Cart {
-    HomePage hp = new HomePage(driver);
-    CartPage cp = new CartPage(driver);
-    Login login = new Login();
+    private static final Log log = LogFactory.getLog(SignUp.class);
+    private WebDriver driver;
+    private HomePage hp;
+    private CartPage cp;
+    private Login login;
 
+    public Cart(WebDriver driver){
+        this.driver = driver;
+        hp = new HomePage(driver);
+        cp = new CartPage(driver);
+        login = new Login(driver);
+    }
     public void viewCart() throws Exception {
         log().info("Opening cart page...");
         hp.cartPage.click();

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Checkout Suite">
+<suite name="Checkout Suite" parallel="methods" thread-count="4">
     <test name="Checkout Test Classes" >
         <classes>
-            <class name="Framework.testCases.CheckoutTest">
-                <methods>
-                    <include name="TC_Checkout_01"/>
-                    <include name="TC_Checkout_02"/>
-                    <include name="TC_Checkout_03"/>
-                    <include name="TC_Checkout_04"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.CheckOut.TC_Checkout_01"/>
+            <class name="Framework.testCases.CheckOut.TC_Checkout_02"/>
+            <class name="Framework.testCases.CheckOut.TC_Checkout_03"/>
+            <class name="Framework.testCases.CheckOut.TC_Checkout_04"/>
         </classes>
     </test>
 </suite>

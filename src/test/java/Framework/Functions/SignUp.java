@@ -1,22 +1,34 @@
 package Framework.Functions;
 
+import Framework.DriverManager;
 import Framework.Elements.HomePage;
 import Framework.Elements.SignupPage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 
 
 import java.util.Arrays;
 import java.util.List;
 
-import static Framework.Functions.common.driver;
 import static Framework.Functions.common.log;
 
 public class SignUp {
-    HomePage home = new HomePage(driver);
-    SignupPage sign = new SignupPage(driver);
+    private static final Log log = LogFactory.getLog(SignUp.class);
+    private WebDriver driver;
+    private HomePage hp;
+    private SignupPage sign;
+
+    public SignUp(WebDriver driver){
+        this.driver = driver;
+        hp = new HomePage(driver);
+        sign = new SignupPage(driver);
+    }
 
     /**
      * Navigates to the signup page and fills in the 'Name' and 'Email' fields.
@@ -25,14 +37,14 @@ public class SignUp {
      * @throws Exception if an error occurs during navigation or field interaction
      */
     public void gotoSign() throws Exception {
-        home.loginSignupPage.click();
+        hp.loginSignupPage.click();
         log().info("Navigating to Signup Page...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
         log().info("After checking The 'Name' and 'Email' field Navigating to fill the Registration Form...");
         // Wait for the page to load and title to match expected value
-        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup", "Page title does not match after navigating to Signup page.");
+        Assert.assertEquals(driver.getTitle(), "Automation Exercise - Signup", "Page title does not match, navigating to Signup page failed.");
         log().info("Page title verified: " + driver.getTitle());
     }
 
@@ -101,7 +113,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void DuplicateUser() throws Exception {
-        home.loginSignupPage.click();
+        hp.loginSignupPage.click();
         log().info("Navigating to Signup Page for Duplicate User Registration...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
@@ -124,7 +136,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void checkSignupReqFields() throws Exception{
-        home.loginSignupPage.click();
+        hp.loginSignupPage.click();
         log().info("Navigating to Signup Page to check Required Fields...");
         // Clear input fields to simulate empty values
         sign.SignupName.clear();
@@ -165,7 +177,7 @@ public class SignUp {
      * @author Mr.MAHESH
      */
     public void invalidEmailRegistration() throws Exception{
-        home.loginSignupPage.click();
+        hp.loginSignupPage.click();
         log().info("Navigating to Signup Page for Invalid Email Registration...");
         sign.SignupName.sendKeys(common.readProp("first_name"));
         sign.SignupEmail.sendKeys(common.readProp("invEmail"));
@@ -184,27 +196,26 @@ public class SignUp {
     }
 
     public void specialCharInName() throws Exception {
-       home.loginSignupPage.click();
+       hp.loginSignupPage.click();
 
         log().info("Navigating to Signup Page for Duplicate User Registration...");
         sign.SignupName.sendKeys(common.readProp("sp_char_name"));
         sign.SignupEmail.sendKeys(common.readProp("email"));
         sign.SignupBtn.click();
 
-        log().info("Checking for error massage for Special Character in Image...");
+        log().info("Checking for error massage for Special Character in Name...");
         // Validate the error message
-        if(common.waitForVisibility(driver, sign.errorMsg, 2).isDisplayed()) {
-            Assert.assertTrue(true, "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
-        } else {
-            Assert.fail("Error message not displayed for Special Character in Name.");
+        try {
+            Assert.assertTrue(common.waitForVisibility(driver, sign.errorMsg, 2).isDisplayed(), "Validation correctly triggered for duplicate email: " + sign.errorMsg.getText());
+        }catch (Exception e) {
+           Assert.fail("Error message element not found for special character in name...");
         }
-
         log().info("Special Character Validation completed successfully...");
     }
 
-    public void caseSensitiveEmail() throws Exception {
+    public void caseInsensitiveEmail() throws Exception {
 
-        home.loginSignupPage.click();
+        hp.loginSignupPage.click();
         log().info("Navigating to Signup Page for Case Sensitive Email Registration...");
         sign.SignupName.sendKeys(common.readProp("full_name"));
         sign.SignupEmail.sendKeys(common.readProp("email").toUpperCase()); // Using uppercase email

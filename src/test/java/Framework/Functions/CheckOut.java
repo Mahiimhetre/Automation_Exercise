@@ -1,23 +1,38 @@
 package Framework.Functions;
 
+import Framework.DriverManager;
 import Framework.Elements.CartPage;
 import Framework.Elements.CheckoutPage;
 import Framework.Elements.HomePage;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.Objects;
 
 import static Framework.Functions.common.*;
 
 public class CheckOut {
-    HomePage hp = new HomePage(driver);
-    CartPage cp = new CartPage(driver);
-    CheckoutPage cop = new CheckoutPage(driver);
-    Cart cart = new Cart();
+    private WebDriver driver;
+    private HomePage hp;
+    private CartPage cp;
+    private CheckoutPage cop;
+    private Cart cart;
+    private Login login;
+    JavascriptExecutor js;
 
-    Login login = new Login();
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+    public CheckOut(WebDriver driver) throws Exception {
+        this.driver = driver;
+        hp = new HomePage(driver);
+        cart = new Cart(driver);
+        cp = new CartPage(driver);
+        cop = new CheckoutPage(driver);
+        login = new Login(driver);
+
+         js= (JavascriptExecutor) driver;
+    }
 
     public void proceedToCheckout() throws Exception {
         login.loginWithValidCreds();
@@ -31,7 +46,6 @@ public class CheckOut {
                 "URL does not contain 'checkout', checkout page not reached...");
         log().info("Checkout page reached successfully, URL contains 'checkout'...");
     }
-
 
     public void placeOrder() throws Exception {
         Assert.assertFalse(cop.deliveryAddress.isEmpty(),
@@ -51,6 +65,7 @@ public class CheckOut {
 
         Assert.assertTrue(Objects.requireNonNull(driver.getCurrentUrl()).contains("payment"),
                 "URL does not contain 'payment', order placement page not reached...");
+
         log().info("User Navigated to Payment page successfully...");
     }
 
@@ -105,8 +120,5 @@ public class CheckOut {
         }
         log().info("Order placement failed as expected with empty payment details...");
     }
-
-
-
 
 }

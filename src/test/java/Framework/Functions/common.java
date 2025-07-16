@@ -1,5 +1,6 @@
 package Framework.Functions;
 
+import Framework.DriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,8 +20,6 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 public class common {
-    public static WebDriver driver;
-
     /**
      * This method initializes the WebDriver for Chrome and opens the specified URL.
      * @author : Mr.MAHESH
@@ -31,34 +29,38 @@ public class common {
      */
     public static WebDriver openWeb(String url) throws Exception {
         WebDriverManager.chromedriver().setup(); // Automatically sets up the ChromeDriver executable
-        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless=new"); // Run Chrome in headless mode
-        driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize(); // Maximize the browser window
+        WebDriver driver = new ChromeDriver(chromeOptions);
+
+        DriverManager.setDriver(driver); // Set the WebDriver instance in DriverManager
+        WebDriver currentDriver = DriverManager.getDriver();
+        currentDriver.manage().window().maximize(); // Maximize the browser window
+
         log().info("Launching browser and navigating to: " + url);
-        driver.get(url);
+        currentDriver.get(url);
         removeAds();
-        driver.get(url);
-        return driver; // Return the WebDriver instance
+        return currentDriver; // Return the WebDriver instance
     }
 
     public static void removeAds() throws Exception {
         // This method is to remove ads from the webpage using JavaScript
         try {
             // Find all ad elements
-            List<WebElement> ads = driver.findElements(By.xpath("//iframe[@title='Advertisement']"));
+            List<WebElement> ads = DriverManager.getDriver().findElements(By.xpath("//iframe[@title='Advertisement']"));
             if( !ads.isEmpty() && ads.size() > 0) {
                 log().info("Advertisement iframes removed from the current page...");
 
                 // Remove each ad using JavaScript
-                JavascriptExecutor js = (JavascriptExecutor) driver;
+                JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
                 for (WebElement ad : ads) {
                     js.executeScript("arguments[0].remove();", ad);
                 }
             }
         }
-        catch (Exception e) {log().info("");}
+        catch (Exception e) {
+            log().info("");
+        }
     }
 
     /**
@@ -72,9 +74,9 @@ public class common {
      */
     public static Logger log() throws Exception{
         Properties prop = new Properties();
-        prop.load(new FileInputStream("src/test/resources/log4j.properties"));         // path of your log4j.properties file
+        String propFilePath = System.getProperty("user.dir")+"/src/test/resources/log4j.properties"; // path of your log4j.properties file
+        prop.load(new FileInputStream(propFilePath));      // path of your log4j.properties file
         PropertyConfigurator.configure(prop);
-        PropertyConfigurator.configure("src/test/resources/log4j.properties");  // path of your log4j.properties file
         BasicConfigurator.configure();
         return Logger.getLogger(common.class.getName());
     }
@@ -102,7 +104,7 @@ public class common {
      * @author : Mr.MAHESH
      */
     public static boolean isRequired(WebElement element) throws Exception {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
         boolean result = (Boolean) js.executeScript("return arguments[0].hasAttribute('required');", element);
         return result; // Return the actual attribute check result
     }
@@ -182,7 +184,7 @@ return wait.until(ExpectedConditions.titleContains(partialTitle));
         return wait.until(driver1 -> {
             if (element.isDisplayed()) {
                 try {
-                    log().info("Element became visible: " + element.toString());
+                    log().info("Element became visible: " + element.getText());
                 } catch (Exception e) {
                     System.out.print("");
                 }
@@ -198,6 +200,6 @@ return wait.until(ExpectedConditions.titleContains(partialTitle));
     // This method closes the WebDriver instance and quits the browser.
     public static void closeWeb(WebDriver driver) throws Exception {
         log().info("Quitting the browser...");
-        driver.quit();
+        DriverManager.quitDriver();
     }
 }

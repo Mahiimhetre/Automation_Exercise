@@ -2,12 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>AutomationExercise</artifactId>
+  <artifactId>Automation_Exercise</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Archetype - AutomationExercise</name>
+  <name>Archetype - Automation_Exercise</name>
   <url>http://maven.apache.org</url>
 
-  <description>AutomationExercise Using Selenium Project</description>
+  <description>Automation_Exercise Using Selenium Project</description>
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -17,11 +17,18 @@
       <version>4.33.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.epam.healenium/healenium-web -->
+    <dependency>
+      <groupId>com.epam.healenium</groupId>
+      <artifactId>healenium-web</artifactId>
+      <version>3.5.6</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.14.3</version>
+      <version>7.10.2</version>
       <!--  <scope>test</scope>   Uncomment if you want to limit TestNG to test scope only -->
     </dependency>
 
@@ -76,7 +83,7 @@
         <version>3.5.3</version> <!-- or whatever version you're using -->
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/java/Framework/SuiteFiles/masterSuite.xml</suiteXmlFile>
+            <suiteXmlFile>src/test/java/Framework/SuiteFiles/HomeSuite.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>

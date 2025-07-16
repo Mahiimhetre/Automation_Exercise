@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Home Suite">
+<suite name="Home Suite" parallel="classes" thread-count="4">
     <test name="Home Test Classes" >
         <classes>
-            <class name="Framework.testCases.HomeTest">
-                <methods>
-                    <include name="TC_Home_01"/>
-                    <include name="TC_Home_02"/>
-                    <include name="TC_Home_03"/>
-                    <include name="TC_Home_04"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.Home.TC_Home_01"/>
+            <class name="Framework.testCases.Home.TC_Home_02"/>
+            <class name="Framework.testCases.Home.TC_Home_03"/>
+            <class name="Framework.testCases.Home.TC_Home_04"/>
         </classes>
     </test>
 </suite>

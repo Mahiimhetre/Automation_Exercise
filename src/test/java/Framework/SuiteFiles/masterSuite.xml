@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Master Suite" >
    <suite-files>
-       <suite-file path="HomeSuite.xml"/>
-       <suite-file path="SignUpSuite.xml"/>
-       <suite-file path="LoginSuite.xml"/>
-       <suite-file path="ProductSuite.xml"/>
-       <suite-file path="CartSuite.xml"/>
-       <suite-file path="CheckoutSuite.xml"/>
+        <suite-file path="HomeSuite.xml"/>
+        <suite-file path="SignUpSuite.xml"/>
+        <suite-file path="LoginSuite.xml"/>
+        <suite-file path="ProductSuite.xml"/>
+        <suite-file path="CartSuite.xml"/>
+        <suite-file path="CheckoutSuite.xml"/>
    </suite-files>
 </suite>

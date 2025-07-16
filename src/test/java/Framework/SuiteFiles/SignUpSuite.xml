@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SingUp Suite">
+<suite name="SingUp Suite" parallel="classes" thread-count="3">
     <test name="SignUp Test Classes" >
         <classes>
-            <class name="Framework.testCases.SignupTest">
-                <methods>
-                    <include name="TC_Signup_01"/>
-                    <include name="TC_Signup_02"/>
-                    <include name="TC_Signup_03"/>
-                    <include name="TC_Signup_04"/>
-                    <include name="TC_Signup_05"/>
-                    <include name="TC_Signup_06"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.SignUp.TC_Signup_01"/>
+            <class name="Framework.testCases.SignUp.TC_Signup_02"/>
+            <class name="Framework.testCases.SignUp.TC_Signup_03"/>
+            <class name="Framework.testCases.SignUp.TC_Signup_04"/>
+            <class name="Framework.testCases.SignUp.TC_Signup_05"/>
+            <class name="Framework.testCases.SignUp.TC_Signup_06"/>
         </classes>
     </test>
 </suite>

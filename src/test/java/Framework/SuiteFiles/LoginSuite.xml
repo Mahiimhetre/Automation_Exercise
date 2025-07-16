@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Login Suite">
+<suite name="Login Suite" parallel="classes" thread-count="4">
     <test name="Login Test Classes" >
         <classes>
-            <class name="Framework.testCases.LoginTest">
-                <methods>
-                    <include name="TC_Login_01"/>
-                    <include name="TC_Login_02"/>
-                    <include name="TC_Login_03"/>
-                    <include name="TC_Login_04"/>
-                    <include name="TC_Login_05"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.Login.TC_Login_01"/>
+            <class name="Framework.testCases.Login.TC_Login_02"/>
+            <class name="Framework.testCases.Login.TC_Login_03"/>
+            <class name="Framework.testCases.Login.TC_Login_04"/>
+            <class name="Framework.testCases.Login.TC_Login_05"/>
         </classes>
     </test>
 </suite>

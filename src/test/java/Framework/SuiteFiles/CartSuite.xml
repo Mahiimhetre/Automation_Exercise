@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Cart Suite">
+<suite name="Cart Suite" parallel="classes" thread-count="4">
     <test name="Cart Test Classes">
         <classes>
-            <class name="Framework.testCases.CartTest">
-                <methods>
-                    <include name="TC_Cart_01"/>
-                    <include name="TC_Cart_02"/>
-                    <include name="TC_Cart_03"/>
-                    <include name="TC_Cart_04"/>
-                    <include name="TC_Cart_05"/>
-                    <include name="TC_Cart_06"/>
-                    <include name="TC_Cart_07"/>
-                    <include name="TC_Cart_08"/>
-                </methods>
-            </class>
+            <class name="Framework.testCases.Cart.TC_Cart_01"/>
+            <class name="Framework.testCases.Cart.TC_Cart_02"/>
+            <class name="Framework.testCases.Cart.TC_Cart_03"/>
+            <class name="Framework.testCases.Cart.TC_Cart_04"/>
+            <class name="Framework.testCases.Cart.TC_Cart_05"/>
+            <class name="Framework.testCases.Cart.TC_Cart_06"/>
+            <class name="Framework.testCases.Cart.TC_Cart_07"/>
+            <class name="Framework.testCases.Cart.TC_Cart_08"/>
         </classes>
     </test>
 </suite>

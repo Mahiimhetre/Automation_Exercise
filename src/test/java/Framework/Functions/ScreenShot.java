@@ -53,6 +53,7 @@ public class ScreenShot {
                 log().info("Screenshot saved for failed test: " + result.getName());
                 Allure.addAttachment("Screenshot on Failure", FileUtils.openInputStream(screenshot)); // Attach the screenshot to Allure report
             } catch (IOException e) {
+                log().info("Failed to capture screenshot for test: " + result.getName());
                 e.printStackTrace();
             }
         }
