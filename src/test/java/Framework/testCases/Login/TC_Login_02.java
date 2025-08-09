@@ -9,6 +9,9 @@ import Framework.Functions.*;
 import Framework.DriverManager;
 
 import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Login_02 {
     private WebDriver driver;
@@ -17,20 +20,20 @@ public class TC_Login_02 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         login = new Login(driver);
     }
 
-    @Test
+    @Test(description = "TC_Login_02 - Verify error when logging in with incorrect email")
     public void invEmailLogin() throws Exception {
-        common.log().info("Executing TC_Login_02: Login with Invalid Email...");
+        log().info("TC_Login_02: Verifying error when logging in with incorrect email");
         login.invalidEmailLogin();
-        common.log().info("TC_Login_02 Login with Invalid Email executed successfully...");
+        log().info("TC_Login_02: Successfully verified error when logging in with incorrect email");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

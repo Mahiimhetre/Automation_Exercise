@@ -21,17 +21,16 @@ public class TC_Cart_03 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_03() throws Exception {
-        // Test case to remove products from the cart
-        log().info("Executing TC_Cart_03: Remove products from cart...");
+    @Test(description = "TC_Cart_03 - Remove products from cart")
+    public void removeProductsFromCart() throws Exception {
+        log().info("TC_Cart_03: Verifying removal of products from cart");
         cart.RemoveFromCart();
-        log().info("TC_Cart_03 Remove products from cart executed successfully...");
+        log().info("TC_Cart_03: Successfully verified removal of products from cart");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

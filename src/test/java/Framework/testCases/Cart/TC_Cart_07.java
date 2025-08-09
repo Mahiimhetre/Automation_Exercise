@@ -23,18 +23,18 @@ public class TC_Cart_07 {
         login = new Login(driver);
     }
 
-@Test
-    public void TC_Cart_07() throws Exception{
-        log().info("Executing TC_Cart_07: Add multiple products to the cart...");
+    @Test(description = "TC_Cart_07 - Add multiple products to cart")
+    public void addMultipleProductsToCart() throws Exception {
+        log().info("TC_Cart_07: Verifying addition of multiple products to cart");
         login.loginWithValidCreds();
         removeAds();
-        cart.addProducts(3); // Assuming 3 products to be added
-        log().info("TC_Cart_07 Add multiple products to the cart executed successfully...");
+        cart.addProducts(3); // Add 3 products to the cart
+        log().info("TC_Cart_07: Successfully verified addition of multiple products to cart");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

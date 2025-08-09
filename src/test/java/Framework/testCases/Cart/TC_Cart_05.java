@@ -21,18 +21,18 @@ public class TC_Cart_05 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_05() throws Exception {
-        log().info("Executing TC_Cart_05: Verify total price is according to the Unit Price and Quantity...");
-        cart.addProducts(2); // Assuming 2 products to be added
+    @Test(description = "TC_Cart_05 - Verify total price with multiple products")
+    public void verifyTotalPriceWithMultipleProducts() throws Exception {
+        log().info("TC_Cart_05: Verifying total price with multiple products");
+        cart.addProducts(2); // Add 2 products to the cart
         cart.viewCart();
         cart.checkTotalPrice();
-        log().info("TC_Cart_05 Verify total price is according to the Unit Price and Quantity executed successfully...");
+        log().info("TC_Cart_05: Successfully verified total price with multiple products");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Prod_03 {
     private WebDriver driver;
@@ -17,21 +20,20 @@ public class TC_Prod_03 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         prod = new Product(driver);
     }
 
-    // this priority is set to 1 so that it runs After TC_Prod_01/TC_Prod_02  because the other test depends on the product search.
-    @Test
+    @Test(description = "TC_Prod_03 - Verify search with valid product name")
     public void SearchProd() throws Exception {
-        common.log().info("Executing TC_Prod_03: Search Available Product name...");
-        prod.searchProduct(common.readProp("productName"));
-        common.log().info("TC_Prod_03 Search Available Product name executed successfully...");
+        log().info("TC_Prod_03: Verifying search with valid product name");
+        prod.searchProduct(readProp("productName"));
+        log().info("TC_Prod_03: Successfully verified search with valid product name");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

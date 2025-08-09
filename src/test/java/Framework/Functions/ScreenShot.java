@@ -46,7 +46,16 @@ public class ScreenShot {
         if (result.getStatus() == ITestResult.FAILURE) {
             log().info("Test failed: " + result.getName() + ". Capturing screenshot...");
             Thread.sleep(1000); // Wait for a second to ensure the page is fully loaded before capturing the screenshot.
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);  // Capture screenshot on failure
+
+            File screenshot;
+            if (driver instanceof com.epam.healenium.SelfHealingDriver) { // Check if the driver is a SelfHealingDriver
+                WebDriver delegate = ((com.epam.healenium.SelfHealingDriver) driver).getDelegate();
+                screenshot = ((TakesScreenshot) delegate).getScreenshotAs(OutputType.FILE);
+            } else   // If not a SelfHealingDriver, use the standard TakesScreenshot interface
+            {
+                screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            }
+
             try {
                 // Save the screenshot to the specified directory with the test name
 //                FileUtils.copyFile(screenshot, new File("screenshots/" + result.getName() + ".png"));

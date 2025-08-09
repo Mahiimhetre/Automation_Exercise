@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Home_02 {
     private WebDriver driver;
@@ -17,20 +20,20 @@ public class TC_Home_02 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         home = new Home(driver);
     }
 
-    @Test
+    @Test(description = "TC_Home_02 - Verify Subscription using valid email")
     public void validCredSubscribe() throws Exception {
-        log().info("Executing TC_Home_02: Verify Subscribe with Valid Credentials...");
+        log().info("TC_Home_02: Verifying subscription using valid email");
         home.checkSubscribe();
-        log().info("TC_Home_002 Verify Subscribe with Valid Credentials executed successfully...");
+        log().info("TC_Home_02: Successfully verified subscription using valid email");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

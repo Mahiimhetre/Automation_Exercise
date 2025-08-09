@@ -8,6 +8,11 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
+
 public class TC_Prod_07 {
     private WebDriver driver;
     private Product prod;
@@ -15,24 +20,23 @@ public class TC_Prod_07 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         prod = new Product(driver);
     }
 
-    //add Product to cart with invalid quantity
-    @Test
+    @Test(description = "TC_Prod_07 - Verify handling of invalid quantity when adding to cart")
     public void addInvQuant() throws Exception {
-        common.log().info("Executing TC_Prod_06: Add Product to Cart with Invalid Quantity...");
-        prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available
+        log().info("TC_Prod_07: Verifying handling of invalid quantity when adding to cart");
+        prod.searchProduct(readProp("productName")); // Re-searching to ensure the product is available
         prod.openProductDetails(0); // Open the first product in the search results
 
-        prod.addToCartWithInvalidQuantity(common.readProp("invalidProdQuantity")); // Assuming the product quantity is invalid
-        common.log().info("TC_Prod_06 Add Product to Cart with Invalid Quantity executed successfully...");
+        prod.addToCartWithInvalidQuantity(readProp("invalidProdQuantity")); // Assuming the product quantity is invalid
+        log().info("TC_Prod_07: Successfully verified handling of invalid quantity when adding to cart");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

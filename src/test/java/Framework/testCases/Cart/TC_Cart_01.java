@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 
-import static Framework.Functions.common.log;
+import static Framework.Functions.common.*;
 
 public class TC_Cart_01 {
     private WebDriver driver;
@@ -21,17 +21,16 @@ public class TC_Cart_01 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_01() throws Exception {
-
-        log().info("Executing TC_Cart_01: View cart...");
+    @Test(description = "TC_Cart_01 - View cart contents")
+    public void viewCartContents() throws Exception {
+        log().info("TC_Cart_01: Verifying the cart page displays correctly");
         cart.viewCart();
-        log().info("TC_Cart_01 View cart executed successfully...");
+        log().info("TC_Cart_01: Successfully verified the cart page displays correctly");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

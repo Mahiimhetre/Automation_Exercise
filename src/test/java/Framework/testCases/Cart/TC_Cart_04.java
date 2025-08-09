@@ -21,17 +21,16 @@ public class TC_Cart_04 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_04() throws Exception {
-        // Test case to verify the cart is empty after removing all products
-        log().info("Executing TC_Cart_04: Verify cart is empty after removal...");
+    @Test(description = "TC_Cart_04 - Verify cart is empty after removal")
+    public void verifyCartIsEmptyAfterRemoval() throws Exception {
+        log().info("TC_Cart_04: Verifying cart is empty after removal");
         cart.checkEmptyCart();
-        log().info("TC_Cart_04 Verify cart is empty after removal executed successfully...");
+        log().info("TC_Cart_04: Successfully verified cart is empty after removal");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

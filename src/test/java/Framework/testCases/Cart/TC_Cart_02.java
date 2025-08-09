@@ -21,17 +21,16 @@ public class TC_Cart_02 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_02() throws Exception {
-        // Test case to check product count in the cart
-        log().info("Executing TC_Cart_02: Check product count in cart...");
+    @Test(description = "TC_Cart_02 - Verify product count in cart")
+    public void verifyProductCountInCart() throws Exception {
+        log().info("TC_Cart_02: Verifying product count in cart");
         cart.checkProdCount();
-        log().info("TC_Cart_02 Check product count in cart executed successfully...");
+        log().info("TC_Cart_02: Successfully verified product count in cart");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

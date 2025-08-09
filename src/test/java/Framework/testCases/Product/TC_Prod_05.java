@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Prod_05 {
     private WebDriver driver;
@@ -17,23 +20,23 @@ public class TC_Prod_05 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         prod = new Product(driver);
     }
 
-    @Test
+    @Test(description = "TC_Prod_05 - Verify product details are displayed correctly")
     public void prodDetailVerification() throws Exception {
-        common.log().info("Executing TC_Prod_05: Verify product details...");
-        prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available
+        log().info("TC_Prod_05: Verifying product details are displayed correctly");
+        prod.searchProduct(readProp("productName")); // Re-searching to ensure the product is available
         prod.openProductDetails(0); // Open the first product in the search results
 
-        prod.verifyProductDetails(common.readProp("expectedProduct"), common.readProp("expectedProductPrice"));
-        common.log().info("TC_Prod_05 Verify product details executed successfully...");
+        prod.verifyProductDetails(readProp("expectedProduct"), readProp("expectedProductPrice"));
+        log().info("TC_Prod_05: Successfully verified product details are displayed correctly");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Signup_06 {
     private WebDriver driver;
@@ -17,20 +20,20 @@ public class TC_Signup_06 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         si = new SignUp(driver);
     }
 
-    @Test(description = "Signup with case insensitivity Test")
+    @Test(description = "TC_Signup_06 - Verify case insensitivity in email during signup")
     public void caseInsensitivitySignup() throws Exception {
-        log().info("Executing TC_Signup_06: Signup with case insensitivity started...");
+        log().info("TC_Signup_06: Verifying case insensitivity in email during signup");
         si.caseInsensitiveEmail();
-        log().info("TC_Signup_06: Signup with case insensitivity executed successfully...");
+        log().info("TC_Signup_06: Successfully verified case insensitivity in email during signup");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

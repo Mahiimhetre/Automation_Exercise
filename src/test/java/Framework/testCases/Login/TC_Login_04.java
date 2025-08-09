@@ -9,6 +9,9 @@ import Framework.Functions.*;
 import Framework.DriverManager;
 
 import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Login_04 {
     private WebDriver driver;
@@ -17,20 +20,20 @@ public class TC_Login_04 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         login = new Login(driver);
     }
 
-    @Test
+    @Test(description = "TC_Login_04 - Verify login with blank fields")
     public void blankFieldLogin() throws Exception {
-        common.log().info("Executing TC_Login_04: Login with blank fields...");
+        log().info("TC_Login_04: Verifying login with blank fields");
         login.blankFieldsLogin();
-        common.log().info("TC_Login_04 Login with blank fields executed successfully...");
+        log().info("TC_Login_04: Successfully verified login with blank fields");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

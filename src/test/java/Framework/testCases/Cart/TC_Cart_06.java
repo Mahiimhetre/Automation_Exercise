@@ -21,17 +21,17 @@ public class TC_Cart_06 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_06() throws Exception{
-        log().info("Executing TC_Cart_06: Checkout without Login...");
+    @Test(description = "TC_Cart_06 - Verify checkout without login")
+    public void verifyCheckoutWithoutLogin() throws Exception {
+        log().info("TC_Cart_06: Verifying checkout without login");
         cart.viewCart();
         cart.checkEmptyCartModal();
-        log().info("TC_Cart_06 Checkout without Login executed successfully...");
+        log().info("TC_Cart_06: Successfully verified checkout without login");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

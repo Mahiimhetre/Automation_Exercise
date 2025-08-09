@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Checkout_02 {
     private WebDriver driver;
@@ -17,23 +20,23 @@ public class TC_Checkout_02 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         cout = new CheckOut(driver);
     }
 
-    @Test
+    @Test(description = "TC_Checkout_02 - Verify order placement with valid payment details")
     public void validPayment() throws Exception {
-        log().info("Executing TC_Checkout_02: Place Order with valid payment details...");
+        log().info("TC_Checkout_02: Verifying order placement with valid payment details");
         cout.proceedToCheckout();
         cout.placeOrder();
         cout.paymentDetails();
         // Additional assertions can be added here to verify order confirmation
-        log().info("TC_Checkout_02: Place Order with valid payment details executed Successfully...");
+        log().info("TC_Checkout_02: Successfully verified order placement with valid payment details");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

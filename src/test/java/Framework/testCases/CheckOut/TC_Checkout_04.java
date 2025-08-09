@@ -8,32 +8,34 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Checkout_04 {
     private WebDriver driver;
     private CheckOut cout;
 
     @BeforeMethod
-    public void preCondition() throws Exception     {
+    public void preCondition() throws Exception {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         cout = new CheckOut(driver);
     }
 
-    @Test
-    public void TC_Checkout_04() throws Exception {
-        // Test case to verify order confirmation
-        log().info("Executing TC_Checkout_04: Place order with Empty payment details...");
+    @Test(description = "TC_Checkout_04 - Verify order placement with empty payment details")
+    public void placeOrderWithEmptyPaymentDetails() throws Exception {
+        log().info("TC_Checkout_04: Verifying order placement with empty payment details");
         cout.proceedToCheckout();
         cout.placeOrder();
         cout.emptyPaymentDetails();
-        log().info("TC_Checkout_04: Place order with Empty payment details executed Successfully...");
+        log().info("TC_Checkout_04: Successfully verified order placement with empty payment details");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

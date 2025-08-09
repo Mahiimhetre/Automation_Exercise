@@ -8,8 +8,15 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
+/**
+ * Test case to verify order placement with invalid payment details
+ * Thread-safe implementation without BaseTest
+ */
 public class TC_Checkout_03 {
     private WebDriver driver;
     private CheckOut cout;
@@ -17,22 +24,22 @@ public class TC_Checkout_03 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         cout = new CheckOut(driver);
     }
 
-    @Test
+    @Test(description = "TC_Checkout_03 - Verify order placement with invalid payment details")
     public void invalidPayment() throws Exception {
-        log().info("Executing TC_Checkout_03: PLace Order with invalid payment details...");
+        log().info("TC_Checkout_03: Verifying order placement with invalid payment details");
         cout.proceedToCheckout();
         cout.placeOrder();
         cout.invalidPaymentDetails();
-        log().info("TC_Checkout_03: Place Order with invalid payment details executed Successfully...");
+        log().info("TC_Checkout_03: Successfully verified order placement with invalid payment details");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

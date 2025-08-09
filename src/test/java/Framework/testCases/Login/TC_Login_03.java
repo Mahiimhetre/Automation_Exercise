@@ -9,6 +9,9 @@ import Framework.Functions.*;
 import Framework.DriverManager;
 
 import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Login_03 {
     private WebDriver driver;
@@ -17,20 +20,20 @@ public class TC_Login_03 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         login = new Login(driver);
     }
 
-    @Test
+    @Test(description = "TC_Login_03 - Verify error when logging in with wrong password")
     public void invPassLogin() throws Exception {
-        common.log().info("Executing TC_Login_03: Login with Invalid Password...");
+        log().info("TC_Login_03: Verifying error when logging in with wrong password");
         login.invalidPassLogin();
-        common.log().info("TC_Login_03 Login with Invalid Password executed successfully...");
+        log().info("TC_Login_03: Successfully verified error when logging in with wrong password");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

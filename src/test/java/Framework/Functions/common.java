@@ -1,6 +1,7 @@
 package Framework.Functions;
 
 import Framework.DriverManager;
+import com.epam.healenium.SelfHealingDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.PropertyConfigurator;
@@ -28,19 +29,25 @@ public class common {
      * @throws Exception
      */
     public static WebDriver openWeb(String url) throws Exception {
-        WebDriverManager.chromedriver().setup(); // Automatically sets up the ChromeDriver executable
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless=new"); // Run Chrome in headless mode
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        // Load Healenium configuration
+        System.setProperty("healenium.config", "src/test/resources/healenium.properties");
 
-        DriverManager.setDriver(driver); // Set the WebDriver instance in DriverManager
-        WebDriver currentDriver = DriverManager.getDriver();
-        currentDriver.manage().window().maximize(); // Maximize the browser window
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless=new");
+
+        // Create base driver
+        WebDriver delegate = new ChromeDriver(chromeOptions);
+        SelfHealingDriver driver = SelfHealingDriver.create(delegate); // Correct way to create SelfHealingDriver
+
+        DriverManager.setDriver(driver); // If setDriver expects WebDriver, SelfHealingDriver implements WebDriver
+
+        driver.manage().window().maximize();
 
         log().info("Launching browser and navigating to: " + url);
-        currentDriver.get(url);
+        driver.get(url);
         removeAds();
-        return currentDriver; // Return the WebDriver instance
+        return driver;
     }
 
     public static void removeAds() throws Exception {

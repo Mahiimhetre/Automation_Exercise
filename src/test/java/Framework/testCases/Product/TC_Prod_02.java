@@ -8,7 +8,10 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
-import static Framework.Functions.common.*;
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Prod_02 {
     private WebDriver driver;
@@ -17,21 +20,20 @@ public class TC_Prod_02 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         prod = new Product(driver);
     }
 
-    // Search product with invalid name
-    @Test(priority = 0)
-    public void invProdSearch() throws Exception{
-        common.log().info("Executing TC_Prod_02: Search Product by unavailable Product name...");
-        prod.searchNonAvailableProduct(common.readProp("invalidProductName"));
-        common.log().info("TC_Prod_02 Search Product by unavailable Product name executed successfully...");
+    @Test(priority = 1, description = "TC_Prod_02 - Verify message when searching for unavailable product")
+    public void invProdSearch() throws Exception {
+        log().info("TC_Prod_02: Verifying message when searching for unavailable product");
+        prod.searchNonAvailableProduct(readProp("invalidProductName"));
+        log().info("TC_Prod_02: Successfully verified message when searching for unavailable product");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

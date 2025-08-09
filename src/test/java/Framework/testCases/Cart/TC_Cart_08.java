@@ -21,16 +21,16 @@ public class TC_Cart_08 {
         cart = new Cart(driver);
     }
 
-@Test
-    public void TC_Cart_08() throws Exception{
-        log().info("Executing TC_Cart_08: Verify cart persistence after logout...");
+    @Test(description = "TC_Cart_08 - Verify cart persistence after logout")
+    public void verifyCartPersistenceAfterLogout() throws Exception {
+        log().info("TC_Cart_08: Verifying cart persistence after logout");
         cart.cartPercistence();
-        log().info("TC_Cart_08 Verify cart persistence after logout executed successfully...");
+        log().info("TC_Cart_08: Successfully verified cart persistence after logout");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

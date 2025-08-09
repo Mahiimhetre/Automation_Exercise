@@ -10,3 +10,6 @@
         <suite-file path="CheckoutSuite.xml"/>
    </suite-files>
 </suite>
+
+<!--if you want to skip perticular test case from healenium healing, you can use the following code snippet in your test case:
+    @DesaHealing        -->

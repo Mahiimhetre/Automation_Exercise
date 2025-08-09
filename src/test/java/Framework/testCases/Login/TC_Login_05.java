@@ -9,6 +9,9 @@ import Framework.Functions.*;
 import Framework.DriverManager;
 
 import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
 
 public class TC_Login_05 {
     private WebDriver driver;
@@ -17,21 +20,21 @@ public class TC_Login_05 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         login = new Login(driver);
     }
 
-    @Test
+    @Test(description = "TC_Login_05 - Verify user can log out successfully")
     public void logout() throws Exception {
-        common.log().info("Executing TC_Login_05: Logout from Application...");
+        log().info("TC_Login_05: Verifying user can log out successfully");
         login.loginWithValidCreds();
         login.logoutFromApplication();
-        common.log().info("TC_Login_05 Logout from Application executed successfully...");
+        log().info("TC_Login_05: Successfully verified user can log out");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }

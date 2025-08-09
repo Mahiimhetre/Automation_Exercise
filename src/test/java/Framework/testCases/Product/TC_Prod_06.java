@@ -8,6 +8,11 @@ import org.testng.annotations.AfterMethod;
 import Framework.Functions.*;
 import Framework.DriverManager;
 
+import static Framework.Functions.common.log;
+import static Framework.Functions.common.openWeb;
+import static Framework.Functions.common.readProp;
+import static Framework.Functions.common.closeWeb;
+
 public class TC_Prod_06 {
     private WebDriver driver;
     private Product prod;
@@ -15,23 +20,22 @@ public class TC_Prod_06 {
     @BeforeMethod
     public void preCondition() throws Exception     {
         driver = DriverManager.getDriver();
-        driver = common.openWeb(common.readProp("url"));
+        driver = openWeb(readProp("url"));
         prod = new Product(driver);
     }
 
-    //add Product to cart with valid quantity
-    @Test
+    @Test(description = "TC_Prod_06 - Verify adding product to cart with valid quantity")
     public void addValidQuant() throws Exception {
-        common.log().info("Executing TC_Prod_07: Add Product to Cart with Valid Quantity...");
-        prod.searchProduct(common.readProp("productName")); // Re-searching to ensure the product is available
+        log().info("TC_Prod_06: Verifying adding product to cart with valid quantity");
+        prod.searchProduct(readProp("productName")); // Re-searching to ensure the product is available
         prod.openProductDetails(0); // Open the first product in the search results
-        prod.addToCart(common.readProp("productQuantity"));
-        common.log().info("TC_Prod_07 Add Product to Cart with Valid Quantity executed successfully...");
+        prod.addToCart(readProp("productQuantity"));
+        log().info("TC_Prod_06: Successfully verified adding product to cart with valid quantity");
     }
 
     @AfterMethod
     public void postCondition(ITestResult result) throws Exception {
         ScreenShot.captureOnFailure(driver, result);
-        common.closeWeb(driver);
+        closeWeb(driver);
     }
 }
