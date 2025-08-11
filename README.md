@@ -170,7 +170,7 @@ pipeline {
 ## Contribution
 
 PRs and issues are welcome!  
-Please see our [Contribution Guidelines](CONTRIBUTING.md) for details on submitting pull requests, coding standards, and how to help with documentation or tests.
+Please see our [Contribution Guidelines](contribution.md) for details on submitting pull requests, coding standards, and how to help with documentation or tests.
 
 ---
 
