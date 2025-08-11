@@ -10,7 +10,7 @@ This project is a comprehensive hands-on exercise in software test automation. I
 
 ---
 
-[Quick Start](#getting-started) | [Features](#features-at-a-glance) | [Project Structure](#project-structure) | [How to Extend](#how-to-extend) | [Contribution](contribution.md) | [FAQ](#troubleshooting--faq)
+[Quick Start](#getting-started) | [Features](#features-at-a-glance) | [Project Structure](#project-structure) | [How to Extend](#how-to-extend) | [Contribution](#contribution) | [FAQ](#troubleshooting--faq)
 
 ---
 
